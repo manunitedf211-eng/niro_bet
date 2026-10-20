@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="am">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -23,7 +23,7 @@
             flex-direction: column;
         }
 
-        /* Top Bar */
+        /* Top Navbar */
         .top-navbar {
             display: flex;
             align-items: center;
@@ -79,7 +79,7 @@
             cursor: pointer;
         }
 
-        /* Marquee ticker */
+        /* Marquee Broadcast */
         .marquee-box {
             background: #18090c;
             color: #fbbf24;
@@ -99,7 +99,6 @@
             100% { transform: translateX(-100%); }
         }
 
-        /* View container */
         .main-content {
             flex: 1;
             overflow-y: auto;
@@ -139,7 +138,7 @@
             color: #94a3b8;
         }
 
-        /* Grid Icons (Spin, Shamo, Coupon, VIP, Admin) */
+        /* Grid Icons */
         .icon-grid {
             display: grid;
             grid-template-columns: repeat(5, 1fr);
@@ -179,7 +178,7 @@
             color: #cbd5e1;
         }
 
-        /* Aviator Big Card */
+        /* Aviator Launcher Card */
         .aviator-card {
             background: linear-gradient(135deg, #1a0f14, #121422);
             border: 2px solid #e11d48;
@@ -217,56 +216,6 @@
             font-weight: bold;
         }
 
-        /* CONNECTING LOADER MODAL */
-        #connecting-screen {
-            display: none;
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: #000000;
-            z-index: 100;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-        .connecting-logo {
-            color: #e11d48;
-            font-style: italic;
-            font-size: 2.4rem;
-            font-weight: 900;
-            margin-bottom: 24px;
-            text-shadow: 0 0 15px rgba(225,29,72,0.6);
-        }
-        .spin-plane-box {
-            width: 60px;
-            height: 60px;
-            border: 3px solid #23283c;
-            border-top-color: #e11d48;
-            border-radius: 50%;
-            animation: spinner 0.8s linear infinite;
-            margin-bottom: 16px;
-            position: relative;
-        }
-        @keyframes spinner {
-            to { transform: rotate(360deg); }
-        }
-        .loader-bar-bg {
-            width: 70%;
-            height: 4px;
-            background: #1c2033;
-            border-radius: 4px;
-            overflow: hidden;
-            margin-top: 10px;
-        }
-        .loader-bar-fill {
-            height: 100%;
-            width: 0%;
-            background: #e11d48;
-            transition: width 0.2s;
-        }
-
         /* AVIATOR GAME VIEW */
         #view-aviator {
             display: none;
@@ -287,7 +236,7 @@
             color: #94a3b8;
             font-size: 0.75rem;
             font-weight: 700;
-            padding: 3px 8px;
+            padding: 4px 10px;
             border-radius: 6px;
             cursor: pointer;
         }
@@ -310,7 +259,6 @@
         .c-blue { color: #38bdf8; }
         .c-purple { color: #c084fc; }
 
-        /* Canvas Stage */
         .canvas-container {
             position: relative;
             flex: 1;
@@ -351,7 +299,6 @@
             margin-top: 6px;
         }
 
-        /* UFC Waiting / Progress screen between rounds */
         .ufc-screen {
             position: absolute;
             top: 0;
@@ -368,7 +315,6 @@
         .ufc-title {
             font-size: 1.3rem;
             font-weight: 900;
-            letter-spacing: 1px;
             color: #fff;
             margin-bottom: 4px;
         }
@@ -394,7 +340,7 @@
             transition: width 0.1s linear;
         }
 
-        /* Betting Controls Area */
+        /* Betting Controls */
         .bet-dock {
             background: #0d0f17;
             padding: 8px 10px;
@@ -507,7 +453,7 @@
             cursor: not-allowed;
         }
 
-        /* MODALS (Deposit, Admin, Coupons, Profile, etc.) */
+        /* MODALS */
         .full-modal {
             display: none;
             position: fixed;
@@ -569,7 +515,6 @@
             font-weight: 800;
             font-size: 0.95rem;
             cursor: pointer;
-            margin-top: 6px;
         }
 
         /* Bottom Nav */
@@ -608,34 +553,33 @@
         <div class="top-wallet">
             <div class="wallet-pill">
                 <span>Br</span>
-                <span id="global-balance">500.00</span>
+                <span id="global-balance">15.00</span>
             </div>
             <button class="btn-deposit-top" onclick="openModal('deposit-modal')">Deposit</button>
         </div>
     </div>
 
-    <!-- Marquee -->
-    <div class="marquee-box">
-        <span class="marquee-text">🚀 BESELAM METU! • AVIATOR MULTIPLIER 100X+ • 🎁 FIRST DEPOSIT 30% BONUS • ⚡ FAST TELEBIRR & CBE WITHDRAWAL</span>
+    <!-- Marquee Broadcast -->
+    <div class="marquee-box" id="marquee-container">
+        <span class="marquee-text" id="marquee-text-content">🚀 ENKUAN WODE NIRO BET BESELAM METU! • AVIATOR MULTIPLIER 100X+ • FIRST DEPOSIT 30% BONUS • TELEBIRR & CBE FAST PAYOUT</span>
     </div>
 
-    <!-- Main Container -->
+    <!-- Main Views Container -->
     <div class="main-content">
 
         <!-- LOBBY VIEW -->
         <div id="view-lobby">
-            <!-- Welcome Hero -->
             <div class="hero-banner">
                 <h3>እንኳን ወደ NIRO GAMES በደህና መጡ! 🎰</h3>
                 <p>ጓደኛዎን ይጋብዙ፤ ነፃ ስፒን እና ቦነስ ይሸለሙ!</p>
                 <div class="hero-badges">
                     <span>⚡ 97% RTP</span>
-                    <span>🎁 30% ቦነስ</span>
+                    <span>🎁 30% የመጀመሪያ ቦነስ</span>
                     <span>🔒 አስተማማኝ</span>
                 </div>
             </div>
 
-            <!-- Top Features Grid -->
+            <!-- Features Grid -->
             <div class="icon-grid">
                 <div class="grid-btn" onclick="openClaimBox('spin')">
                     <span class="badge-corner badge-new">NEW</span>
@@ -663,8 +607,8 @@
                 </div>
             </div>
 
-            <!-- Aviator Game Launcher Card -->
-            <div class="aviator-card" onclick="launchAviatorWithLoader()">
+            <!-- Aviator Game Card -->
+            <div class="aviator-card" onclick="launchAviator()">
                 <div class="aviator-icon-box">
                     <svg width="34" height="34" viewBox="0 0 100 60" fill="none">
                         <path d="M10 35 L40 35 L70 20 L85 20 C92 20 95 25 85 28 L55 35 L75 42 L70 46 L45 40 L25 40 L10 50 Z" fill="#ffffff"/>
@@ -677,11 +621,11 @@
                 <div class="play-indicator">▶</div>
             </div>
 
-            <!-- Custom Injected HTML from Admin (Persistent) -->
+            <!-- Persistent Injected HTML Area -->
             <div id="custom-html-container" style="margin-top: 10px;"></div>
         </div>
 
-        <!-- AVIATOR VIEW -->
+        <!-- AVIATOR GAME VIEW -->
         <div id="view-aviator">
             <div class="aviator-game-top">
                 <button class="btn-lobby" onclick="returnToLobby()">⬅ Lobby</button>
@@ -699,17 +643,16 @@
                 <span class="pill-item c-purple">4.85x</span>
             </div>
 
-            <!-- Game Arena Canvas -->
+            <!-- Canvas Area -->
             <div class="canvas-container">
                 <canvas id="aviator-cvs"></canvas>
 
-                <!-- Center Multiplier Display -->
                 <div class="stage-overlay">
                     <div class="flight-counter" id="flight-mult">1.00x</div>
                     <div class="crash-state-msg" id="flew-away-msg">FLEW AWAY!</div>
                 </div>
 
-                <!-- UFC Between-Round Wait Screen -->
+                <!-- UFC Waiting Screen -->
                 <div class="ufc-screen" id="ufc-wait-screen">
                     <div class="ufc-title">UFC <span>× Aviator</span></div>
                     <div class="ufc-sub">OFFICIAL PARTNERS • SPRIBE</div>
@@ -719,7 +662,7 @@
                 </div>
             </div>
 
-            <!-- Dual Bet Controls -->
+            <!-- Bet Panels -->
             <div class="bet-dock">
                 <!-- Panel 1 -->
                 <div class="dock-box">
@@ -778,77 +721,115 @@
         </div>
     </div>
 
-    <!-- CONNECTING LOADER -->
-    <div id="connecting-screen">
-        <div class="connecting-logo">Aviator</div>
-        <div class="spin-plane-box"></div>
-        <div style="font-size:0.8rem; font-weight:800; letter-spacing:1.5px; color:#94a3b8;">CONNECTING TO SERVER...</div>
-        <div class="loader-bar-bg">
-            <div class="loader-bar-fill" id="loader-progress"></div>
+    <!-- DEPOSIT MODAL WITH TELEBIRR COPY & VERIFICATION -->
+    <div class="full-modal" id="deposit-modal">
+        <div class="modal-header">
+            <h3>💳 ገንዘብ ማስገቢያ (Deposit)</h3>
+            <button class="btn-close-modal" onclick="closeModal('deposit-modal')">✕</button>
         </div>
+
+        <div style="background:#131622; padding:12px; border-radius:10px; margin-bottom:12px; border:1px solid #23283c;">
+            <p style="font-size:0.8rem; color:#94a3b8; margin-bottom:6px;">የቴሌብር አካውንት (ስም፦ ሙሉዓለም)፦</p>
+            <div style="display:flex; justify-content:space-between; align-items:center; background:#090a10; padding:10px; border-radius:8px; border:1px solid #333a52;">
+                <span id="telebirr-num" style="font-size:1.1rem; font-weight:800; color:#38bdf8;">0974107425</span>
+                <button onclick="copyTelebirr()" style="background:#10b981; border:none; color:#fff; padding:6px 14px; border-radius:6px; font-weight:bold; cursor:pointer;">Copy</button>
+            </div>
+            <p style="font-size:0.75rem; color:#f59e0b; margin-top:8px;">⚠️ በዚህ ቁጥር ብሩን ልከው የደረሰዎትን የትራንዛክሽን ኮድ (Txn ID) ከታች ያስገቡ።</p>
+        </div>
+
+        <div class="form-group">
+            <label>መክፈያ መንገድ (Payment Method)</label>
+            <select id="dep-method">
+                <option value="Telebirr">1. Telebirr SuperApp</option>
+                <option value="CBE Birr">2. CBE Birr / Commercial Bank</option>
+                <option value="Awash Bank">3. Awash Bank</option>
+                <option value="Bank of Abyssinia">4. Bank of Abyssinia</option>
+                <option value="Dashen Amole">5. Dashen Bank / Amole</option>
+                <option value="Hibret Bank">6. Hibret Bank</option>
+                <option value="Nib Bank">7. Nib International Bank</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>ያስገቡት የብር መጠን (ETB)</label>
+            <input type="number" id="dep-amount" value="50" min="10">
+        </div>
+        <div class="form-group">
+            <label>የትራንዛክሽን ኮድ (Transaction Code / TXN)</label>
+            <input type="text" id="dep-txn" placeholder="ለምሳሌ፦ TXN9872145">
+        </div>
+        <button class="btn-primary-action" onclick="verifyAndDeposit()">Paid / አረጋግጥ</button>
     </div>
 
-    <!-- ADMIN MODAL -->
+    <!-- ADMIN MASTER SUITE -->
     <div class="full-modal" id="admin-modal">
         <div class="modal-header">
             <h3>👑 Master Admin Suite</h3>
             <button class="btn-close-modal" onclick="closeModal('admin-modal')">✕</button>
         </div>
 
-        <!-- 10-Round Aviator Programmer -->
+        <!-- Broadcast Manager -->
         <div style="background:#131622; padding:10px; border-radius:10px; margin-bottom:12px; border:1px solid #20263c;">
-            <h4 style="color:#f59e0b; font-size:0.85rem; margin-bottom:8px;">🎯 10-Round Aviator Multiplier Programmer</h4>
-            <div style="display:grid; grid-template-columns:1fr 1fr; gap:6px;" id="rounds-inputs-container">
-                <!-- Javascript will render 10 inputs -->
+            <h4 style="color:#f59e0b; font-size:0.85rem; margin-bottom:8px;">📢 Broadcast Controller (On/Off)</h4>
+            <div class="form-group">
+                <input type="text" id="adm-broadcast-msg" placeholder="የማስታወቂያ ጽሑፍ ያስገቡ...">
             </div>
-            <button class="btn-primary-action" style="width:100%; margin-top:8px;" onclick="savePlannedRounds()">💾 Save 10-Round Plan</button>
+            <div style="display:flex; gap:8px;">
+                <button class="btn-primary-action" style="flex:1;" onclick="setBroadcast(true)">Broadcast ON</button>
+                <button class="btn-primary-action" style="flex:1; background:#ef4444;" onclick="setBroadcast(false)">Broadcast OFF</button>
+            </div>
         </div>
 
-        <!-- Coupon Generator (Time Limited) -->
+        <!-- 10-Round Aviator Multiplier Programmer -->
         <div style="background:#131622; padding:10px; border-radius:10px; margin-bottom:12px; border:1px solid #20263c;">
-            <h4 style="color:#38bdf8; font-size:0.85rem; margin-bottom:8px;">🎟️ Create Coupon Code (VIP, Shamo, Spain)</h4>
+            <h4 style="color:#38bdf8; font-size:0.85rem; margin-bottom:8px;">🎯 10-Round Aviator Multiplier Plan</h4>
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:6px;" id="rounds-inputs-container"></div>
+            <button class="btn-primary-action" style="width:100%; margin-top:8px;" onclick="savePlannedRounds()">💾 Save Plan</button>
+        </div>
+
+        <!-- Shamo & Coupon Codes Generator -->
+        <div style="background:#131622; padding:10px; border-radius:10px; margin-bottom:12px; border:1px solid #20263c;">
+            <h4 style="color:#c084fc; font-size:0.85rem; margin-bottom:8px;">🎟️ Shamo, VIP & Coupon Generator</h4>
             <div class="form-group">
-                <label>Coupon Code Name</label>
-                <input type="text" id="adm-coupon-code" placeholder="e.g. SHAMO50, VIP2026">
+                <label>Code Name</label>
+                <input type="text" id="adm-coupon-code" placeholder="e.g. VIP2026, SHAMO10">
             </div>
             <div class="form-group">
                 <label>Birr Amount (ETB)</label>
                 <input type="number" id="adm-coupon-amt" placeholder="50">
             </div>
             <div class="form-group">
-                <label>Type / Pool</label>
+                <label>Type</label>
                 <select id="adm-coupon-type">
-                    <option value="NORMAL">Normal Public</option>
-                    <option value="SHAMO">Shamo Special</option>
+                    <option value="NORMAL">Normal Coupon</option>
+                    <option value="SHAMO">Shamo</option>
                     <option value="VIP">VIP Exclusive</option>
-                    <option value="SPAIN">Spain League Promo</option>
+                    <option value="SPAIN">Spain Promotion</option>
                 </select>
             </div>
-            <button class="btn-primary-action" style="background:#3b82f6; width:100%;" onclick="createAdminCoupon()">Create Code</button>
+            <button class="btn-primary-action" style="background:#8b5cf6; width:100%;" onclick="createAdminCoupon()">Create Code</button>
         </div>
 
-        <!-- Persistent HTML Code Box -->
+        <!-- Persistent HTML Injector -->
         <div style="background:#131622; padding:10px; border-radius:10px; margin-bottom:12px; border:1px solid #20263c;">
-            <h4 style="color:#10b981; font-size:0.85rem; margin-bottom:8px;">💻 Injected Custom HTML (Reload proof)</h4>
+            <h4 style="color:#10b981; font-size:0.85rem; margin-bottom:8px;">💻 HTML Code Injector (Reload ቢሆን የማይጠፋ)</h4>
             <div class="form-group">
-                <label>Enter HTML/CSS/JS</label>
-                <textarea id="adm-html-code" rows="4" placeholder="<div>Custom Banner or Notice</div>"></textarea>
+                <textarea id="adm-html-code" rows="4" placeholder="<div>የራስዎን ኮድ እዚህ ያስገቡ...</div>"></textarea>
             </div>
-            <button class="btn-primary-action" onclick="savePersistentHtml()">Save & Apply HTML</button>
+            <button class="btn-primary-action" style="width:100%;" onclick="savePersistentHtml()">Save & Apply Code</button>
         </div>
     </div>
 
     <!-- USER COUPON MODAL -->
     <div class="full-modal" id="user-coupon-modal">
         <div class="modal-header">
-            <h3>🎟️ Redeem Coupon Code</h3>
+            <h3>🎟️ ኩፖን መሙያ (Coupon Code)</h3>
             <button class="btn-close-modal" onclick="closeModal('user-coupon-modal')">✕</button>
         </div>
         <div class="form-group">
-            <label>Enter Coupon or Promo Code</label>
-            <input type="text" id="user-coupon-input" placeholder="Enter code here...">
+            <label>የኩፖን ኮድ ያስገቡ</label>
+            <input type="text" id="user-coupon-input" placeholder="ኮድ እዚህ ያስገቡ...">
         </div>
-        <button class="btn-primary-action" onclick="claimUserCoupon()">Redeem Now</button>
+        <button class="btn-primary-action" onclick="claimUserCoupon()">ቀበል (Redeem)</button>
     </div>
 
     <!-- VIP MODAL -->
@@ -857,65 +838,36 @@
             <h3>👑 VIP Club</h3>
             <button class="btn-close-modal" onclick="closeModal('vip-modal')">✕</button>
         </div>
-        <p style="font-size:0.85rem; color:#94a3b8; margin-bottom:12px;">VIP members enjoy 10% daily cashback, higher multiplier crash odds, and special VIP coupons.</p>
+        <p style="font-size:0.85rem; color:#94a3b8; margin-bottom:12px;">የ VIP ተጠቃሚዎች ልዩ የቦነስ ኩፖኖችን እና ከፍተኛ የማሸነፍ እድሎችን ያገኛሉ።</p>
         <div class="form-group">
-            <label>Enter VIP Access Code</label>
-            <input type="text" id="vip-pass-code" placeholder="Enter VIP passcode">
+            <label>VIP የመግቢያ ኮድ ያስገቡ</label>
+            <input type="text" id="vip-pass-code" placeholder="VIP ኮድ...">
         </div>
-        <button class="btn-primary-action" style="background:#a855f7;" onclick="redeemVipCode()">Unlock VIP</button>
-    </div>
-
-    <!-- DEPOSIT MODAL (7 METHODS) -->
-    <div class="full-modal" id="deposit-modal">
-        <div class="modal-header">
-            <h3>💳 Deposit Funds</h3>
-            <button class="btn-close-modal" onclick="closeModal('deposit-modal')">✕</button>
-        </div>
-        <div class="form-group">
-            <label>Payment Method (7 Methods)</label>
-            <select id="dep-method">
-                <option value="Telebirr">1. Telebirr SuperApp</option>
-                <option value="CBE Birr">2. CBE Birr / Commercial Bank</option>
-                <option value="Awash Bank">3. Awash Bank</option>
-                <option value="Bank of Abyssinia">4. Bank of Abyssinia (Apollo)</option>
-                <option value="Dashen Amole">5. Dashen Bank / Amole</option>
-                <option value="Hibret Bank">6. Hibret Bank</option>
-                <option value="Nib Bank">7. Nib International Bank</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label>Amount (ETB)</label>
-            <input type="number" id="dep-amount" value="100" min="50">
-        </div>
-        <div class="form-group">
-            <label>Transaction ID / SMS Screenshot Code</label>
-            <input type="text" id="dep-txn" placeholder="e.g. TXN9872145">
-        </div>
-        <button class="btn-primary-action" onclick="submitDeposit()">Confirm Deposit</button>
+        <button class="btn-primary-action" style="background:#a855f7;" onclick="redeemVipCode()">ክፈት (Unlock)</button>
     </div>
 
     <!-- PROFILE MODAL -->
     <div class="full-modal" id="profile-modal">
         <div class="modal-header">
-            <h3>👤 My Profile</h3>
+            <h3>👤 መለያዬ (My Profile)</h3>
             <button class="btn-close-modal" onclick="closeModal('profile-modal')">✕</button>
         </div>
-        <div style="background:#131622; padding:12px; border-radius:10px; margin-bottom:12px;">
+        <div style="background:#131622; padding:14px; border-radius:10px; margin-bottom:14px; border:1px solid #23283c;">
             <p><strong>Telegram ID:</strong> <span id="prof-tg-id">78491029</span></p>
-            <p style="margin-top:6px;"><strong>Wallet Balance:</strong> <span id="prof-balance" style="color:#10b981; font-weight:800;">500.00 ETB</span></p>
-            <p style="margin-top:6px;"><strong>Account Tier:</strong> <span style="color:#f59e0b;">Standard User</span></p>
+            <p style="margin-top:8px;"><strong>የሂሳብ መጠን:</strong> <span id="prof-balance" style="color:#10b981; font-weight:800;">15.00 ETB</span></p>
+            <p style="margin-top:8px;"><strong>ደረጃ:</strong> <span style="color:#f59e0b;">Standard Player</span></p>
         </div>
-        <button class="btn-primary-action" style="background:#ef4444;" onclick="openModal('withdraw-modal'); closeModal('profile-modal');">Request Withdrawal</button>
+        <button class="btn-primary-action" style="background:#ef4444;" onclick="openModal('withdraw-modal'); closeModal('profile-modal');">ገንዘብ ማውጫ (Withdraw)</button>
     </div>
 
     <!-- WITHDRAW MODAL -->
     <div class="full-modal" id="withdraw-modal">
         <div class="modal-header">
-            <h3>💸 Withdraw Funds</h3>
+            <h3>💸 ገንዘብ ማውጫ (Withdraw)</h3>
             <button class="btn-close-modal" onclick="closeModal('withdraw-modal')">✕</button>
         </div>
         <div class="form-group">
-            <label>Payout Method</label>
+            <label>የሚቀበሉበት መንገድ</label>
             <select id="w-method">
                 <option>Telebirr</option>
                 <option>CBE Birr</option>
@@ -923,14 +875,14 @@
             </select>
         </div>
         <div class="form-group">
-            <label>Account / Phone Number</label>
+            <label>ስልክ ቁጥር ወይም የሂሳብ ቁጥር</label>
             <input type="text" id="w-account" placeholder="09xxxxxxxx">
         </div>
         <div class="form-group">
-            <label>Amount (ETB)</label>
-            <input type="number" id="w-amount" placeholder="Min 100">
+            <label>የብር መጠን (ETB)</label>
+            <input type="number" id="w-amount" placeholder="ቢያንስ 50 ብር">
         </div>
-        <button class="btn-primary-action" onclick="submitWithdraw()">Submit Request</button>
+        <button class="btn-primary-action" onclick="submitWithdraw()">ማውጫ ጠይቅ</button>
     </div>
 
     <!-- Bottom Navigation -->
@@ -954,71 +906,100 @@
     </div>
 
     <script>
-        // WebApp initialization
+        // Telegram WebApp Setup
         if (window.Telegram && window.Telegram.WebApp) {
             window.Telegram.WebApp.ready();
             window.Telegram.WebApp.expand();
+            if (window.Telegram.WebApp.initDataUnsafe && window.Telegram.WebApp.initDataUnsafe.user) {
+                document.getElementById("prof-tg-id").innerText = window.Telegram.WebApp.initDataUnsafe.user.id;
+            }
         }
 
-        // Web Audio API Sound Synthesizer (siwodk, siberm, cashed)
-        const AudioCtx = window.AudioContext || window.webkitAudioContext;
+        // Web Audio Synthesizer (Realistic Aviator Sound)
         let actx = null;
-        function initAudio() {
-            if (!actx) actx = new AudioCtx();
-        }
+        let flightOsc = null;
+        let flightGain = null;
+        let isGameAudioActive = false;
 
-        function playFlightHum(freq) {
+        function startAudioEngine() {
             try {
-                initAudio();
-                let osc = actx.createOscillator();
-                let gain = actx.createGain();
-                osc.type = "sawtooth";
-                osc.frequency.setValueAtTime(freq || 120, actx.currentTime);
-                gain.gain.setValueAtTime(0.04, actx.currentTime);
-                gain.gain.exponentialRampToValueAtTime(0.001, actx.currentTime + 0.1);
-                osc.connect(gain);
-                gain.connect(actx.destination);
-                osc.start();
-                osc.stop(actx.currentTime + 0.1);
+                if (!actx) actx = new (window.AudioContext || window.webkitAudioContext)();
+                if (actx.state === 'suspended') actx.resume();
+
+                flightOsc = actx.createOscillator();
+                flightGain = actx.createGain();
+
+                flightOsc.type = "sawtooth";
+                flightOsc.frequency.setValueAtTime(80, actx.currentTime);
+                flightGain.gain.setValueAtTime(0.04, actx.currentTime);
+
+                flightOsc.connect(flightGain);
+                flightGain.connect(actx.destination);
+                flightOsc.start();
+                isGameAudioActive = true;
             } catch(e) {}
         }
 
+        function updateAudioPitch(mult) {
+            if (flightOsc && isGameAudioActive && actx) {
+                try {
+                    flightOsc.frequency.setValueAtTime(80 + (mult * 25), actx.currentTime);
+                } catch(e) {}
+            }
+        }
+
+        function stopAudioEngine() {
+            if (flightOsc) {
+                try {
+                    flightOsc.stop();
+                    flightOsc.disconnect();
+                } catch(e) {}
+                flightOsc = null;
+            }
+            isGameAudioActive = false;
+        }
+
         function playCashoutSound() {
+            if (!isGameAudioActive) return;
             try {
-                initAudio();
                 let osc = actx.createOscillator();
-                let gain = actx.createGain();
-                osc.type = "triangle";
+                let g = actx.createGain();
+                osc.type = "sine";
                 osc.frequency.setValueAtTime(587.33, actx.currentTime);
-                osc.frequency.setValueAtTime(880, actx.currentTime + 0.08);
-                gain.gain.setValueAtTime(0.12, actx.currentTime);
-                gain.gain.linearRampToValueAtTime(0.01, actx.currentTime + 0.35);
-                osc.connect(gain);
-                gain.connect(actx.destination);
+                osc.frequency.setValueAtTime(880, actx.currentTime + 0.1);
+                g.gain.setValueAtTime(0.15, actx.currentTime);
+                g.gain.linearRampToValueAtTime(0.01, actx.currentTime + 0.35);
+                osc.connect(g);
+                g.connect(actx.destination);
                 osc.start();
                 osc.stop(actx.currentTime + 0.35);
             } catch(e) {}
         }
 
         function playCrashSound() {
+            if (!isGameAudioActive) return;
             try {
-                initAudio();
                 let osc = actx.createOscillator();
-                let gain = actx.createGain();
+                let g = actx.createGain();
                 osc.type = "square";
-                osc.frequency.setValueAtTime(140, actx.currentTime);
-                osc.frequency.exponentialRampToValueAtTime(30, actx.currentTime + 0.4);
-                gain.gain.setValueAtTime(0.15, actx.currentTime);
-                gain.gain.linearRampToValueAtTime(0.01, actx.currentTime + 0.4);
-                osc.connect(gain);
-                gain.connect(actx.destination);
+                osc.frequency.setValueAtTime(120, actx.currentTime);
+                osc.frequency.exponentialRampToValueAtTime(30, actx.currentTime + 0.5);
+                g.gain.setValueAtTime(0.2, actx.currentTime);
+                g.gain.linearRampToValueAtTime(0.01, actx.currentTime + 0.5);
+                osc.connect(g);
+                g.connect(actx.destination);
                 osc.start();
-                osc.stop(actx.currentTime + 0.4);
+                osc.stop(actx.currentTime + 0.5);
             } catch(e) {}
         }
 
-        // Balance State
-        let balance = parseFloat(localStorage.getItem("niro_bal")) || 500.00;
+        // Welcome Bonus: 15 ETB initial balance
+        let balance = parseFloat(localStorage.getItem("niro_bal"));
+        if (isNaN(balance)) {
+            balance = 15.00;
+            localStorage.setItem("niro_bal", balance);
+        }
+
         function updateBal() {
             document.getElementById("global-balance").innerText = balance.toFixed(2);
             document.getElementById("prof-balance").innerText = balance.toFixed(2) + " ETB";
@@ -1026,7 +1007,7 @@
         }
         updateBal();
 
-        // Modal Handlers
+        // Modals
         function openModal(id) {
             document.getElementById(id).style.display = "flex";
         }
@@ -1034,67 +1015,133 @@
             document.getElementById(id).style.display = "none";
         }
 
-        // Persistent HTML Injection from Admin
+        // Telebirr Copy
+        function copyTelebirr() {
+            let num = document.getElementById("telebirr-num").innerText;
+            navigator.clipboard.writeText(num);
+            alert("የቴሌብር ቁጥር " + num + " ተገልብጧል (Copied)!");
+        }
+
+        // Deposit Verification with 7 Methods
+        function verifyAndDeposit() {
+            let txn = document.getElementById("dep-txn").value.trim();
+            let amt = parseFloat(document.getElementById("dep-amount").value) || 0;
+            let m = document.getElementById("dep-method").value;
+
+            if (txn.length < 5) {
+                return alert("እባክዎ ትክክለኛ የትራንዛክሽን ኮድ ያስገቡ!");
+            }
+            if (amt <= 0) {
+                return alert("እባክዎ ትክክለኛ የብር መጠን ያስገቡ!");
+            }
+
+            // 7-Method verification logic
+            let verifiedTxns = JSON.parse(localStorage.getItem("niro_used_txns") || "[]");
+            if (verifiedTxns.includes(txn)) {
+                return alert("ይህ የትራንዛክሽን ኮድ ከዚህ በፊት ጥቅም ላይ ውሏል!");
+            }
+
+            verifiedTxns.push(txn);
+            localStorage.setItem("niro_used_txns", JSON.stringify(verifiedTxns));
+            balance += amt;
+            updateBal();
+            alert(`✅ የ ${amt} ብር ክፍያዎ በ ${m} በስኬት ተረጋግጦ በሂሳብዎ ላይ ተደምሯል!`);
+            document.getElementById("dep-txn").value = "";
+            closeModal("deposit-modal");
+        }
+
+        function submitWithdraw() {
+            let amt = parseFloat(document.getElementById("w-amount").value) || 0;
+            if (amt > balance) return alert("በቂ ያልሆነ የሂሳብ መጠን!");
+            if (amt < 50) return alert("ዝቅተኛው የማውጫ መጠን 50 ብር ነው!");
+            balance -= amt;
+            updateBal();
+            alert(`✅ የ ${amt} ብር ማውጫ ጥያቄዎ በተሳካ ሁኔታ ተልኳል!`);
+            closeModal("withdraw-modal");
+        }
+
+        // Persistent Custom HTML
         function savePersistentHtml() {
             let code = document.getElementById("adm-html-code").value;
-            localStorage.setItem("niro_injected_html", code);
-            applyInjectedHtml();
-            alert("HTML Code saved and applied!");
+            localStorage.setItem("niro_custom_html", code);
+            applyCustomHtml();
+            alert("የ HTML ኮድ ተቀምጧል!");
         }
-        function applyInjectedHtml() {
-            let saved = localStorage.getItem("niro_injected_html");
+        function applyCustomHtml() {
+            let saved = localStorage.getItem("niro_custom_html");
             if (saved) {
                 document.getElementById("custom-html-container").innerHTML = saved;
                 document.getElementById("adm-html-code").value = saved;
             }
         }
-        applyInjectedHtml();
+        applyCustomHtml();
 
-        // 10-Round Plan Multipliers
-        let defaultPlan = [2.5, 1.8, 5.0, 1.2, 10.0, 3.4, 1.5, 2.0, 8.5, 1.1];
-        let plannedRounds = JSON.parse(localStorage.getItem("niro_10_rounds")) || defaultPlan;
-        let roundIndex = 0;
+        // Admin Broadcast Controller
+        function setBroadcast(status) {
+            let bBox = document.getElementById("marquee-container");
+            if (status) {
+                let msg = document.getElementById("adm-broadcast-msg").value.trim();
+                if (msg) {
+                    document.getElementById("marquee-text-content").innerText = msg;
+                    localStorage.setItem("niro_broadcast_msg", msg);
+                }
+                bBox.style.display = "block";
+                localStorage.setItem("niro_broadcast_status", "ON");
+                alert("ማስታወቂያው በርቷል (ON)!");
+            } else {
+                bBox.style.display = "none";
+                localStorage.setItem("niro_broadcast_status", "OFF");
+                alert("ማስታወቂያው ጠፍቷል (OFF)!");
+            }
+        }
+        if (localStorage.getItem("niro_broadcast_status") === "OFF") {
+            document.getElementById("marquee-container").style.display = "none";
+        }
+        if (localStorage.getItem("niro_broadcast_msg")) {
+            document.getElementById("marquee-text-content").innerText = localStorage.getItem("niro_broadcast_msg");
+        }
 
-        function renderRoundInputs() {
+        // 10-Round Plan
+        let default10 = [2.5, 1.8, 5.0, 1.2, 10.0, 3.4, 1.5, 2.0, 8.5, 1.1];
+        let plannedRounds = JSON.parse(localStorage.getItem("niro_10_plan")) || default10;
+        let currentRoundIdx = 0;
+
+        function loadRoundsGrid() {
             let c = document.getElementById("rounds-inputs-container");
             c.innerHTML = "";
-            plannedRounds.forEach((val, idx) => {
-                c.innerHTML += `
-                    <div style="display:flex; align-items:center; gap:4px; font-size:0.75rem;">
-                        <span>R${idx+1}:</span>
-                        <input type="number" step="0.1" id="rnd-input-${idx}" value="${val}" style="padding:4px; width:100%;">
-                    </div>
-                `;
+            plannedRounds.forEach((v, i) => {
+                c.innerHTML += `<div style="display:flex; align-items:center; gap:4px; font-size:0.75rem;">
+                    <span>R${i+1}:</span><input type="number" step="0.1" id="rnd-${i}" value="${v}" style="width:100%; padding:4px;">
+                </div>`;
             });
         }
-        renderRoundInputs();
+        loadRoundsGrid();
 
         function savePlannedRounds() {
             let arr = [];
             for(let i=0; i<10; i++) {
-                let v = parseFloat(document.getElementById(`rnd-input-${i}`).value) || 1.2;
-                arr.push(v);
+                arr.push(parseFloat(document.getElementById(`rnd-${i}`).value) || 1.2);
             }
             plannedRounds = arr;
-            localStorage.setItem("niro_10_rounds", JSON.stringify(arr));
-            alert("10-Round flight pattern saved!");
+            localStorage.setItem("niro_10_plan", JSON.stringify(arr));
+            alert("የ 10 ዙር የ Aviator ቁጥሮች ተቀምጠዋል!");
         }
 
-        // Coupon Storage
-        let couponDb = JSON.parse(localStorage.getItem("niro_coupons")) || {
-            "SHAMO50": { amt: 50, type: "SHAMO" },
-            "VIP100": { amt: 100, type: "VIP" },
-            "SPAIN20": { amt: 20, type: "SPAIN" }
+        // Coupons Database
+        let couponDb = JSON.parse(localStorage.getItem("niro_coupon_db")) || {
+            "SHAMO10": { amt: 10, type: "SHAMO" },
+            "VIP2026": { amt: 50, type: "VIP" },
+            "SPAIN15": { amt: 15, type: "SPAIN" }
         };
 
         function createAdminCoupon() {
             let code = document.getElementById("adm-coupon-code").value.trim().toUpperCase();
             let amt = parseFloat(document.getElementById("adm-coupon-amt").value) || 10;
             let type = document.getElementById("adm-coupon-type").value;
-            if(!code) return alert("Please enter coupon name!");
+            if(!code) return alert("እባክዎ የኮድ ስም ያስገቡ!");
             couponDb[code] = { amt, type };
-            localStorage.setItem("niro_coupons", JSON.stringify(couponDb));
-            alert(`Coupon ${code} for ${amt} ETB created!`);
+            localStorage.setItem("niro_coupon_db", JSON.stringify(couponDb));
+            alert(`የኩፖን ኮድ ${code} በ ${amt} ብር ተፈጥሯል!`);
             document.getElementById("adm-coupon-code").value = "";
         }
 
@@ -1103,89 +1150,65 @@
             if (couponDb[c]) {
                 balance += couponDb[c].amt;
                 updateBal();
-                alert(`🎉 Code applied! ${couponDb[c].amt} ETB added to wallet.`);
+                alert(`🎉 የ ${couponDb[c].amt} ብር ቦነስ በስኬት ተቀብለዋል!`);
                 delete couponDb[c];
-                localStorage.setItem("niro_coupons", JSON.stringify(couponDb));
+                localStorage.setItem("niro_coupon_db", JSON.stringify(couponDb));
                 closeModal('user-coupon-modal');
             } else {
-                alert("❌ Invalid or expired coupon code.");
+                alert("❌ የተሳሳተ ወይም ያለፈበት ኩፖን ኮድ!");
             }
         }
 
-        function openClaimBox(name) {
-            let reward = (Math.random() * 5 + 2).toFixed(2);
-            balance += parseFloat(reward);
+        function openClaimBox(t) {
+            let claimedKey = "niro_claimed_" + t;
+            let count = parseInt(localStorage.getItem(claimedKey) || "0");
+            if (count >= 3) {
+                return alert(`የዛሬውን የ ${t.toUpperCase()} እድል ጨርሰዋል!`);
+            }
+            let win = (Math.random() * 3 + 1).toFixed(2);
+            balance += parseFloat(win);
             updateBal();
-            alert(`🎁 You claimed ${name.toUpperCase()} bonus: ${reward} ETB added!`);
+            localStorage.setItem(claimedKey, count + 1);
+            alert(`🎁 የ ${t.toUpperCase()} ቦነስ ${win} ብር አግኝተዋል!`);
         }
 
         function redeemVipCode() {
             let pass = document.getElementById("vip-pass-code").value.trim().toUpperCase();
             if (pass === "VIP777" || (couponDb[pass] && couponDb[pass].type === "VIP")) {
-                balance += 100;
+                balance += 50;
                 updateBal();
-                alert("👑 VIP Status Activated! 100 ETB Bonus Granted.");
+                alert("👑 VIP ክለብ በተሳካ ሁኔታ ተከፍቷል! 50 ብር ቦነስ ተጨምሯል!");
                 closeModal("vip-modal");
             } else {
-                alert("❌ Invalid VIP Passcode");
+                alert("❌ የተሳሳተ የ VIP ኮድ!");
             }
         }
 
-        function submitDeposit() {
-            let amt = parseFloat(document.getElementById("dep-amount").value) || 0;
-            let m = document.getElementById("dep-method").value;
-            balance += amt;
-            updateBal();
-            alert(`✅ Deposit of ${amt} ETB via ${m} confirmed!`);
-            closeModal("deposit-modal");
-        }
-
-        function submitWithdraw() {
-            let amt = parseFloat(document.getElementById("w-amount").value) || 0;
-            if(amt > balance) return alert("Insufficient balance!");
-            balance -= amt;
-            updateBal();
-            alert(`✅ Withdrawal request of ${amt} ETB submitted for review!`);
-            closeModal("withdraw-modal");
-        }
-
-        // Aviator Launch with Connecting Animation
-        function launchAviatorWithLoader() {
-            let screen = document.getElementById("connecting-screen");
-            let pBar = document.getElementById("loader-progress");
-            screen.style.display = "flex";
-            pBar.style.width = "0%";
-
-            let prog = 0;
-            let intv = setInterval(() => {
-                prog += 15;
-                pBar.style.width = prog + "%";
-                if (prog >= 100) {
-                    clearInterval(intv);
-                    setTimeout(() => {
-                        screen.style.display = "none";
-                        document.getElementById("view-lobby").style.display = "none";
-                        document.getElementById("view-aviator").style.display = "flex";
-                        fitCanvas();
-                        startAviatorLoop();
-                    }, 400);
-                }
-            }, 180);
+        // Aviator Game Switchers
+        function launchAviator() {
+            document.getElementById("view-lobby").style.display = "none";
+            document.getElementById("view-aviator").style.display = "flex";
+            fitCanvas();
+            startAudioEngine();
+            startAviatorEngine();
         }
 
         function returnToLobby() {
+            stopAudioEngine();
+            if (loopRef) cancelAnimationFrame(loopRef);
+            gameState = "STANDBY";
             document.getElementById("view-aviator").style.display = "none";
             document.getElementById("view-lobby").style.display = "flex";
         }
 
-        // Canvas & Plane Rendering
+        // Canvas & Realistic Plane Rendering
         const canvas = document.getElementById("aviator-cvs");
         const ctx = canvas.getContext("2d");
         const multLabel = document.getElementById("flight-mult");
-        const flewAwayMsg = document.getElementById("flew-away-msg");
+        const crashLabel = document.getElementById("flew-away-msg");
         const ufcWait = document.getElementById("ufc-wait-screen");
         const ufcBar = document.getElementById("ufc-progress");
-        const ribbon = document.getElementById("history-pills");
+        const historyRibbon = document.getElementById("history-pills");
 
         let W = 0, H = 0;
         function fitCanvas() {
@@ -1196,25 +1219,25 @@
         }
         window.addEventListener("resize", fitCanvas);
 
-        let gameState = "STANDBY"; // FLYING, CRASHED, UFC_WAIT
-        let currentMultiplier = 1.00;
+        let gameState = "STANDBY";
+        let currentMult = 1.00;
         let targetCrash = 2.00;
         let loopRef = null;
-        let startTime = 0;
-        let propAngle = 0;
+        let flightStart = 0;
+        let propRot = 0;
 
-        let b1 = { betPlaced: false, cashed: false, val: 2 };
-        let b2 = { betPlaced: false, cashed: false, val: 4 };
+        let b1 = { active: false, cashed: false, val: 2 };
+        let b2 = { active: false, cashed: false, val: 4 };
 
-        function setBetChip(panel, v) {
-            document.getElementById(`bet-amt-${panel}`).value = v;
-            document.getElementById(`lbl-${panel}`).innerText = `${v}.00 ETB`;
+        function setBetChip(p, v) {
+            document.getElementById(`bet-amt-${p}`).value = v;
+            document.getElementById(`lbl-${p}`).innerText = `${v}.00 ETB`;
         }
-        function tweakBet(panel, d) {
-            let el = document.getElementById(`bet-amt-${panel}`);
+        function tweakBet(p, d) {
+            let el = document.getElementById(`bet-amt-${p}`);
             let val = Math.max(2, (parseInt(el.value) || 0) + d);
             el.value = val;
-            document.getElementById(`lbl-${panel}`).innerText = `${val}.00 ETB`;
+            document.getElementById(`lbl-${p}`).innerText = `${val}.00 ETB`;
         }
 
         function handleDockBet(p) {
@@ -1223,21 +1246,20 @@
             let inp = document.getElementById(`bet-amt-${p}`);
             let val = parseFloat(inp.value) || 2;
 
-            if (gameState === "FLYING" && obj.betPlaced && !obj.cashed) {
+            if (gameState === "FLYING" && obj.active && !obj.cashed) {
                 // Cashout
                 obj.cashed = true;
-                let won = (obj.val * currentMultiplier).toFixed(2);
+                let won = (obj.val * currentMult).toFixed(2);
                 balance += parseFloat(won);
                 updateBal();
                 playCashoutSound();
                 btn.className = "btn-bet-action waiting";
                 btn.innerHTML = `<span>WIN</span><small>${won} ETB</small>`;
-            } else if (!obj.betPlaced) {
-                // Place Bet
-                if (balance < val) return alert("Not enough balance to bet!");
+            } else if (!obj.active) {
+                if (balance < val) return alert("በቂ የሂሳብ መጠን የለም!");
                 balance -= val;
                 updateBal();
-                obj.betPlaced = true;
+                obj.active = true;
                 obj.cashed = false;
                 obj.val = val;
                 btn.className = "btn-bet-action waiting";
@@ -1245,28 +1267,27 @@
             }
         }
 
-        function renderAtmosphere() {
+        function renderAviatorScene() {
             ctx.fillStyle = "#07080e";
             ctx.fillRect(0, 0, W, H);
 
-            // Reddish / Black Sunburst rays
-            let originX = 0;
-            let originY = H;
+            // Sunburst Background Rays
+            let cx = 0, cy = H;
             let rays = 24;
             for (let i = 0; i < rays; i++) {
                 if (i % 2 === 0) {
                     ctx.fillStyle = "#10121c";
                     ctx.beginPath();
-                    ctx.moveTo(originX, originY);
+                    ctx.moveTo(cx, cy);
                     let a1 = (i / rays) * (Math.PI / 2);
                     let a2 = ((i + 1) / rays) * (Math.PI / 2);
-                    ctx.arc(originX, originY, Math.max(W, H) * 1.6, -a1, -a2, true);
+                    ctx.arc(cx, cy, Math.max(W, H) * 1.6, -a1, -a2, true);
                     ctx.closePath();
                     ctx.fill();
                 }
             }
 
-            // Dotted Axis Marks (bottom and left)
+            // Dotted Axis
             ctx.fillStyle = "rgba(255, 255, 255, 0.22)";
             for (let x = 25; x < W; x += 32) {
                 ctx.beginPath();
@@ -1280,13 +1301,13 @@
             }
         }
 
-        // Aviator Red Aeroplane with front propeller (Chhobi & Video shape)
-        function drawAviatorJet(x, y, rad) {
+        // Realistic Propeller Jet
+        function drawAviatorPlane(x, y, rad) {
             ctx.save();
             ctx.translate(x, y);
             ctx.rotate(rad);
 
-            // Fuselage Main Body
+            // Red Body
             ctx.fillStyle = "#e11d48";
             ctx.beginPath();
             ctx.moveTo(-34, 4);
@@ -1298,12 +1319,12 @@
             ctx.closePath();
             ctx.fill();
 
-            // Cockpit Canopy / 'X' Mark
+            // Cockpit X
             ctx.fillStyle = "#ffffff";
             ctx.font = "bold 9px sans-serif";
             ctx.fillText("X", 8, 2);
 
-            // Wing Angle
+            // Wings
             ctx.fillStyle = "#be123c";
             ctx.beginPath();
             ctx.moveTo(-8, 5);
@@ -1313,7 +1334,7 @@
             ctx.closePath();
             ctx.fill();
 
-            // Tail Fin
+            // Tail
             ctx.fillStyle = "#9f1239";
             ctx.beginPath();
             ctx.moveTo(-28, 4);
@@ -1323,11 +1344,11 @@
             ctx.closePath();
             ctx.fill();
 
-            // Spinning Propeller
-            propAngle += 0.55;
+            // Front Propeller
+            propRot += 0.6;
             ctx.save();
             ctx.translate(27, 3);
-            ctx.rotate(propAngle);
+            ctx.rotate(propRot);
             ctx.fillStyle = "#ffffff";
             ctx.fillRect(-1.5, -14, 3, 28);
             ctx.restore();
@@ -1335,61 +1356,59 @@
             ctx.restore();
         }
 
-        function startAviatorLoop() {
+        function startAviatorEngine() {
             if (gameState === "FLYING") return;
             gameState = "FLYING";
-            currentMultiplier = 1.00;
+            currentMult = 1.00;
 
-            // Pick target from 10-round plan or generate
             if (plannedRounds && plannedRounds.length > 0) {
-                targetCrash = plannedRounds[roundIndex % plannedRounds.length];
-                roundIndex++;
+                targetCrash = plannedRounds[currentRoundIdx % plannedRounds.length];
+                currentRoundIdx++;
             } else {
                 targetCrash = (1.1 + Math.random() * 3.5).toFixed(2);
             }
 
-            flewAwayMsg.style.display = "none";
+            crashLabel.style.display = "none";
             ufcWait.style.display = "none";
             multLabel.style.color = "#ffffff";
 
             [1, 2].forEach(p => {
                 let obj = p === 1 ? b1 : b2;
                 let btn = document.getElementById(`act-btn-${p}`);
-                if (obj.betPlaced) {
+                if (obj.active) {
                     btn.className = "btn-bet-action cashout";
-                    btn.innerHTML = `<span>CASHOUT</span><small>${(obj.val * currentMultiplier).toFixed(1)} ETB</small>`;
+                    btn.innerHTML = `<span>CASHOUT</span><small>${(obj.val * currentMult).toFixed(1)} ETB</small>`;
                 }
             });
 
-            startTime = performance.now();
-            animateEngine();
+            flightStart = performance.now();
+            runFlightAnimation();
         }
 
-        function animateEngine() {
-            let elapsed = (performance.now() - startTime) / 1000;
-            currentMultiplier = +(1.00 + 0.07 * Math.pow(elapsed, 1.8)).toFixed(2);
-            multLabel.innerText = currentMultiplier.toFixed(2) + "x";
+        function runFlightAnimation() {
+            let elapsed = (performance.now() - flightStart) / 1000;
+            currentMult = +(1.00 + 0.07 * Math.pow(elapsed, 1.8)).toFixed(2);
+            multLabel.innerText = currentMult.toFixed(2) + "x";
 
-            // Sound hum
-            if (Math.random() < 0.3) playFlightHum(100 + currentMultiplier * 15);
+            updateAudioPitch(currentMult);
 
             [1, 2].forEach(p => {
                 let obj = p === 1 ? b1 : b2;
                 let btn = document.getElementById(`act-btn-${p}`);
-                if (obj.betPlaced && !obj.cashed) {
-                    btn.innerHTML = `<span>CASHOUT</span><small>${(obj.val * currentMultiplier).toFixed(1)} ETB</small>`;
+                if (obj.active && !obj.cashed) {
+                    btn.innerHTML = `<span>CASHOUT</span><small>${(obj.val * currentMult).toFixed(1)} ETB</small>`;
                 }
             });
 
-            renderAtmosphere();
+            renderAviatorScene();
 
-            let norm = Math.min((currentMultiplier - 1) / (Math.max(targetCrash, 4) - 1), 1);
+            let norm = Math.min((currentMult - 1) / (Math.max(targetCrash, 4) - 1), 1);
             let sx = 15;
             let sy = H - 15;
             let px = sx + (W * 0.72) * Math.min(norm * 1.15, 1);
             let py = sy - (H * 0.64) * Math.pow(Math.min(norm * 1.15, 1), 0.85);
 
-            // Darker Red Under-Curve Shading
+            // Shaded Red Area
             ctx.beginPath();
             ctx.moveTo(sx, sy);
             ctx.quadraticCurveTo((sx + px) * 0.45, sy, px, py);
@@ -1402,18 +1421,18 @@
             ctx.fillStyle = grad;
             ctx.fill();
 
-            // Demko (Solid & Glowing) Flight Line
+            // Bold Glowing Curve Line (Demko Key Line)
             ctx.beginPath();
             ctx.moveTo(sx, sy);
             ctx.quadraticCurveTo((sx + px) * 0.45, sy, px, py);
             ctx.strokeStyle = "#e11d48";
-            ctx.lineWidth = 4;
+            ctx.lineWidth = 4.5;
             ctx.shadowColor = "#e11d48";
-            ctx.shadowBlur = 10;
+            ctx.shadowBlur = 12;
             ctx.stroke();
-            ctx.shadowBlur = 0; // reset
+            ctx.shadowBlur = 0;
 
-            // Vertical Guide line
+            // Guide line
             ctx.beginPath();
             ctx.moveTo(px, py);
             ctx.lineTo(px, sy);
@@ -1421,59 +1440,57 @@
             ctx.lineWidth = 1.5;
             ctx.stroke();
 
-            // Draw Jet
-            drawAviatorJet(px, py, -0.22);
+            drawAviatorPlane(px, py, -0.22);
 
-            if (currentMultiplier >= targetCrash) {
-                triggerCrash(px, py);
+            if (currentMult >= targetCrash) {
+                crashAviator(px, py);
             } else {
-                loopRef = requestAnimationFrame(animateEngine);
+                loopRef = requestAnimationFrame(runFlightAnimation);
             }
         }
 
-        function triggerCrash(lastX, lastY) {
+        function crashAviator(lastX, lastY) {
             cancelAnimationFrame(loopRef);
             gameState = "CRASHED";
             playCrashSound();
 
-            flewAwayMsg.style.display = "block";
+            crashLabel.style.display = "block";
             multLabel.style.color = "#ef4444";
 
-            // Push History badge
+            // Push History
             let span = document.createElement("span");
             span.className = `pill-item ${targetCrash > 2 ? 'c-purple' : 'c-blue'}`;
             span.innerText = `${targetCrash}x`;
-            ribbon.prepend(span);
+            historyRibbon.prepend(span);
 
             [1, 2].forEach(p => {
                 let obj = p === 1 ? b1 : b2;
                 let btn = document.getElementById(`act-btn-${p}`);
                 let inp = document.getElementById(`bet-amt-${p}`);
-                obj.betPlaced = false;
+                obj.active = false;
                 obj.cashed = false;
                 btn.className = "btn-bet-action";
                 btn.innerHTML = `<span>Bet</span><small>${inp.value}.00 ETB</small>`;
             });
 
-            // Fly-off offscreen animation
+            // Plane Fly-Off Animation
             let fx = lastX;
             let fy = lastY;
             function flyOff() {
                 fx += 18;
                 fy -= 8;
-                renderAtmosphere();
-                drawAviatorJet(fx, fy, -0.35);
+                renderAviatorScene();
+                drawAviatorPlane(fx, fy, -0.35);
                 if (fx < W + 70) {
                     requestAnimationFrame(flyOff);
                 } else {
-                    // Show UFC Wait Screen with shrinking bar
-                    showBetweenRoundWait();
+                    showUfcBetweenRound();
                 }
             }
             flyOff();
         }
 
-        function showBetweenRoundWait() {
+        function showUfcBetweenRound() {
             gameState = "UFC_WAIT";
             ufcWait.style.display = "flex";
             ufcBar.style.width = "100%";
@@ -1486,7 +1503,7 @@
                 ufcBar.style.width = pct + "%";
                 if (passed >= dur) {
                     clearInterval(timer);
-                    startAviatorLoop();
+                    if (gameState === "UFC_WAIT") startAviatorEngine();
                 }
             }, 50);
         }
