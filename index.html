@@ -1,14 +1,419 @@
-aviator-game/
-├── components/
-│   ├── MultiplierDisplay.js    # Animated multiplier display
-│   ├── Plane.js               # SVG plane with animations
-│   ├── BetPanel.js            # Betting controls and buttons
-│   ├── HistoryItem.js         # Individual history pills
-│   └── BottomNav.js           # Navigation menu
-├── App.js                     # Main app component
-├── main.jsx                   # React entry point
-├── index.html                 # HTML template
-├── styles.css                 # Custom CSS and Tailwind imports
-├── tailwind.config.js         # Tailwind configuration
-├── vite.config.js            # Vite configuration
-└── package.json              # Dependencies and scripts
+<!DOCTYPE html>
+<html lang="am">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Semuni Games - Aviator</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            user-select: none;
+        }
+        body {
+            background-color: #0d1117;
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        /* እንኳን ደህና መጡ ባነር */
+        .welcome-banner {
+            background: linear-gradient(90deg, #1f2937, #111827);
+            border-bottom: 2px solid #e11d48;
+            padding: 10px 15px;
+            text-align: center;
+        }
+        .welcome-banner h1 {
+            font-size: 1.1rem;
+            color: #f43f5e;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+        }
+        .welcome-banner p {
+            font-size: 0.75rem;
+            color: #9ca3af;
+            margin-top: 2px;
+        }
+
+        /* History Pills */
+        .history-container {
+            display: flex;
+            gap: 6px;
+            padding: 8px 12px;
+            background: #161b22;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+        .history-pill {
+            background: #21262d;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: bold;
+        }
+        .pill-blue { color: #38bdf8; }
+        .pill-purple { color: #c084fc; }
+
+        /* Game Canvas Area */
+        .game-area {
+            position: relative;
+            flex: 1;
+            min-height: 240px;
+            background: radial-gradient(circle at center, #1b222c 0%, #0d1117 100%);
+            border-bottom: 2px solid #21262d;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .multiplier-display {
+            font-size: 3.2rem;
+            font-weight: 900;
+            color: #ffffff;
+            z-index: 5;
+            text-shadow: 0 0 20px rgba(225, 29, 72, 0.4);
+        }
+        .crashed-text {
+            color: #ef4444;
+            display: none;
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-top: 4px;
+            text-align: center;
+        }
+
+        /* Animated SVG Plane */
+        #plane-svg {
+            position: absolute;
+            left: 10%;
+            bottom: 15%;
+            width: 75px;
+            height: 50px;
+            transition: transform 0.1s linear;
+            z-index: 4;
+        }
+
+        /* Curve Line */
+        canvas#curve-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+        }
+
+        /* Bet Controls */
+        .controls-area {
+            padding: 12px;
+            background: #161b22;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .bet-box {
+            background: #0d1117;
+            border: 1px solid #30363d;
+            border-radius: 10px;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 8px;
+        }
+        .bet-inputs {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            flex: 1;
+        }
+        .input-row {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .bet-input {
+            width: 100%;
+            background: #21262d;
+            border: 1px solid #30363d;
+            border-radius: 6px;
+            padding: 8px;
+            color: white;
+            font-size: 1rem;
+            font-weight: bold;
+            text-align: center;
+            outline: none;
+        }
+        .quick-btn {
+            background: #21262d;
+            border: 1px solid #30363d;
+            color: #9ca3af;
+            border-radius: 6px;
+            padding: 6px 10px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .action-btn {
+            background: #22c55e;
+            border: none;
+            color: white;
+            border-radius: 8px;
+            padding: 16px 20px;
+            font-size: 1.1rem;
+            font-weight: 800;
+            cursor: pointer;
+            min-width: 120px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(34, 197, 94, 0.3);
+        }
+        .action-btn.cashout {
+            background: #eab308;
+            box-shadow: 0 4px 12px rgba(234, 179, 8, 0.3);
+        }
+        .action-btn.waiting {
+            background: #4b5563;
+            cursor: not-allowed;
+            box-shadow: none;
+        }
+
+        /* Bottom Nav */
+        .bottom-nav {
+            display: flex;
+            justify-content: space-around;
+            padding: 10px 0;
+            background: #0d1117;
+            border-top: 1px solid #21262d;
+        }
+        .nav-item {
+            text-align: center;
+            color: #9ca3af;
+            font-size: 0.75rem;
+            text-decoration: none;
+        }
+        .nav-item.active {
+            color: #f43f5e;
+            font-weight: bold;
+        }
+        .nav-icon {
+            font-size: 1.2rem;
+            display: block;
+            margin-bottom: 2px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Welcome Section -->
+    <div class="welcome-banner">
+        <h1>✨ Semuni Games ✨</h1>
+        <p>እንኳን ወደ Semuni Games Aviator በሰላም መጡ! ይጫወቱ፣ ያሸንፉ!</p>
+    </div>
+
+    <!-- History Bar -->
+    <div class="history-container" id="history">
+        <span class="history-pill pill-blue">1.34x</span>
+        <span class="history-pill pill-purple">2.85x</span>
+        <span class="history-pill pill-blue">1.12x</span>
+        <span class="history-pill pill-purple">12.40x</span>
+        <span class="history-pill pill-blue">1.95x</span>
+    </div>
+
+    <!-- Game Canvas Screen -->
+    <div class="game-area">
+        <canvas id="curve-canvas"></canvas>
+
+        <div style="text-align:center; z-index: 5;">
+            <div class="multiplier-display" id="multiplier">1.00x</div>
+            <div class="crashed-text" id="crashed-info">FLEW AWAY!</div>
+        </div>
+
+        <!-- SVG Airplane -->
+        <svg id="plane-svg" viewBox="0 0 100 60" fill="none">
+            <path d="M10 35 L40 35 L70 20 L85 20 C92 20 95 25 85 28 L55 35 L75 42 L70 46 L45 40 L25 40 L10 50 Z" fill="#ef4444"/>
+            <circle cx="85" cy="24" r="3" fill="#ffffff"/>
+        </svg>
+    </div>
+
+    <!-- Bet Panel -->
+    <div class="controls-area">
+        <div class="bet-box">
+            <div class="bet-inputs">
+                <div class="input-row">
+                    <input type="number" id="bet-amount" class="bet-input" value="10" min="5" step="5">
+                </div>
+                <div class="input-row">
+                    <button class="quick-btn" onclick="adjustBet(10)">+10</button>
+                    <button class="quick-btn" onclick="adjustBet(50)">+50</button>
+                    <button class="quick-btn" onclick="adjustBet(100)">+100</button>
+                    <button class="quick-btn" onclick="adjustBet('2x')">2X</button>
+                </div>
+            </div>
+            <button id="main-btn" class="action-btn" onclick="handleAction()">BET<br><small style="font-size:0.7rem;">10 ETB</small></button>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <div class="bottom-nav">
+        <div class="nav-item active">
+            <span class="nav-icon">🚀</span>
+            <span>Aviator</span>
+        </div>
+        <div class="nav-item">
+            <span class="nav-icon">💳</span>
+            <span>ሒሳብ</span>
+        </div>
+        <div class="nav-item">
+            <span class="nav-icon">🎁</span>
+            <span>ቦነስ</span>
+        </div>
+        <div class="nav-item">
+            <span class="nav-icon">👤</span>
+            <span>መለያ</span>
+        </div>
+    </div>
+
+    <script>
+        // Telegram WebApp Setup
+        if (window.Telegram && window.Telegram.WebApp) {
+            window.Telegram.WebApp.ready();
+            window.Telegram.WebApp.expand();
+        }
+
+        let gameState = "IDLE"; // IDLE, RUNNING, CRASHED
+        let multiplier = 1.00;
+        let crashPoint = 0;
+        let gameInterval = null;
+        let userBet = 0;
+        let isBetPlaced = false;
+
+        const multDisplay = document.getElementById("multiplier");
+        const crashInfo = document.getElementById("crashed-info");
+        const mainBtn = document.getElementById("main-btn");
+        const betInput = document.getElementById("bet-amount");
+        const plane = document.getElementById("plane-svg");
+        const canvas = document.getElementById("curve-canvas");
+        const ctx = canvas.getContext("2d");
+
+        function resizeCanvas() {
+            canvas.width = canvas.parentElement.clientWidth;
+            canvas.height = canvas.parentElement.clientHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        function adjustBet(val) {
+            let cur = parseInt(betInput.value) || 0;
+            if (val === '2x') {
+                betInput.value = cur * 2;
+            } else {
+                betInput.value = cur + val;
+            }
+            updateBtnText();
+        }
+
+        betInput.addEventListener('input', updateBtnText);
+
+        function updateBtnText() {
+            if (!isBetPlaced) {
+                let v = betInput.value || 0;
+                mainBtn.innerHTML = `BET<br><small style="font-size:0.7rem;">${v} ETB</small>`;
+            }
+        }
+
+        function handleAction() {
+            if (gameState === "RUNNING" && isBetPlaced) {
+                // Cashout
+                let win = (userBet * multiplier).toFixed(2);
+                alert(`🎉 እንኳን ደስ አለዎት! ${win} ብር ወጥተዋል!`);
+                isBetPlaced = false;
+                mainBtn.className = "action-btn waiting";
+                mainBtn.innerText = "WAITING...";
+            } else if (!isBetPlaced && (gameState === "IDLE" || gameState === "CRASHED")) {
+                userBet = parseFloat(betInput.value) || 10;
+                isBetPlaced = true;
+                mainBtn.className = "action-btn waiting";
+                mainBtn.innerText = "WAITING...";
+            }
+        }
+
+        function startRound() {
+            gameState = "RUNNING";
+            multiplier = 1.00;
+            crashPoint = (Math.random() * 3 + 1.1 + (Math.random() < 0.2 ? Math.random() * 5 : 0)).toFixed(2);
+            
+            crashInfo.style.display = "none";
+            multDisplay.style.color = "#ffffff";
+
+            if (isBetPlaced) {
+                mainBtn.className = "action-btn cashout";
+                mainBtn.innerText = "CASHOUT";
+            }
+
+            let startX = canvas.width * 0.1;
+            let startY = canvas.height * 0.85;
+
+            gameInterval = setInterval(() => {
+                multiplier = +(multiplier + 0.01 * (multiplier * 0.45)).toFixed(2);
+                multDisplay.innerText = multiplier.toFixed(2) + "x";
+
+                if (isBetPlaced) {
+                    mainBtn.innerHTML = `CASHOUT<br><small style="font-size:0.7rem;">${(userBet * multiplier).toFixed(1)} ETB</small>`;
+                }
+
+                // Move Plane
+                let progress = Math.min((multiplier - 1) / 4, 1);
+                let currentX = startX + progress * (canvas.width * 0.65);
+                let currentY = startY - progress * (canvas.height * 0.55);
+                plane.style.transform = `translate(${currentX}px, -${startY - currentY}px)`;
+
+                // Draw curve
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                ctx.beginPath();
+                ctx.moveTo(0, canvas.height);
+                ctx.quadraticCurveTo(currentX * 0.5, startY, currentX + 30, currentY + 30);
+                ctx.strokeStyle = "#e11d48";
+                ctx.lineWidth = 4;
+                ctx.stroke();
+
+                if (multiplier >= crashPoint) {
+                    endRound();
+                }
+            }, 60);
+        }
+
+        function endRound() {
+            clearInterval(gameInterval);
+            gameState = "CRASHED";
+            crashInfo.style.display = "block";
+            multDisplay.style.color = "#ef4444";
+
+            // Add to history
+            let hist = document.getElementById("history");
+            let span = document.createElement("span");
+            span.className = `history-pill ${crashPoint > 2 ? 'pill-purple' : 'pill-blue'}`;
+            span.innerText = `${crashPoint}x`;
+            hist.prepend(span);
+
+            isBetPlaced = false;
+            mainBtn.className = "action-btn";
+            updateBtnText();
+
+            // Reset Plane
+            setTimeout(() => {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                plane.style.transform = `translate(0px, 0px)`;
+                setTimeout(startRound, 2000);
+            }, 2500);
+        }
+
+        // Round loop
+        setTimeout(startRound, 1000);
+    </script>
+</body>
+</html>
