@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Niro Bet - Aviator & Casino</title>
+    <title>Cassa.BET - Semuni Games</title>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <style>
         * {
@@ -15,7 +15,7 @@
             -webkit-tap-highlight-color: transparent;
         }
         body {
-            background-color: #0b0d14;
+            background-color: #07090e;
             color: #ffffff;
             height: 100vh;
             overflow: hidden;
@@ -29,8 +29,8 @@
             align-items: center;
             justify-content: space-between;
             padding: 8px 12px;
-            background: #111420;
-            border-bottom: 1px solid #1c2033;
+            background: #0d1017;
+            border-bottom: 1px solid #1a202c;
         }
         .brand-logo {
             display: flex;
@@ -38,10 +38,12 @@
             gap: 6px;
         }
         .brand-logo h2 {
-            font-size: 1.15rem;
+            font-size: 1.2rem;
             font-weight: 900;
-            letter-spacing: 0.5px;
             color: #ffffff;
+        }
+        .brand-logo h2 span {
+            color: #10b981;
         }
         .brand-logo span.tag {
             background: #10b981;
@@ -70,13 +72,14 @@
         }
         .btn-deposit-top {
             background: #10b981;
-            color: #ffffff;
-            font-weight: 800;
+            color: #000000;
+            font-weight: 900;
             font-size: 0.8rem;
             border: none;
-            padding: 6px 12px;
+            padding: 6px 14px;
             border-radius: 6px;
             cursor: pointer;
+            box-shadow: 0 0 10px rgba(16, 185, 129, 0.3);
         }
 
         /* Marquee Broadcast */
@@ -112,43 +115,38 @@
             flex-direction: column;
             gap: 12px;
         }
-        .hero-banner {
-            background: linear-gradient(135deg, #171b29, #0d101a);
-            border: 1px solid #f59e0b;
-            border-radius: 12px;
+
+        /* Cassa Big Banner */
+        .cassa-hero-banner {
+            background: linear-gradient(135deg, #111522, #07090e);
+            border: 1px solid #242c3f;
+            border-radius: 14px;
             padding: 14px;
             text-align: center;
         }
-        .hero-banner h3 {
-            color: #ffffff;
-            font-size: 1rem;
-            margin-bottom: 4px;
+        .cassa-hero-banner h3 {
+            color: #facc15;
+            font-size: 1.15rem;
+            font-weight: 900;
         }
-        .hero-banner p {
-            color: #f59e0b;
-            font-size: 0.82rem;
-            font-weight: 700;
-            margin-bottom: 6px;
-        }
-        .hero-badges {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            font-size: 0.7rem;
+        .cassa-hero-banner p {
             color: #94a3b8;
+            font-size: 0.75rem;
+            margin-top: 4px;
+            font-weight: 700;
         }
 
-        /* Features Grid */
+        /* 5 Buttons: Spin, Shamo, Coupon, VIP, Admin */
         .icon-grid {
             display: grid;
             grid-template-columns: repeat(5, 1fr);
             gap: 6px;
         }
         .grid-btn {
-            background: #151826;
-            border: 1px solid #23283e;
+            background: #111420;
+            border: 1px solid #23293d;
             border-radius: 10px;
-            padding: 8px 4px;
+            padding: 8px 3px;
             text-align: center;
             position: relative;
             cursor: pointer;
@@ -165,25 +163,25 @@
         }
         .badge-new { background: #ef4444; }
         .badge-live { background: #f59e0b; }
-        .badge-vip { background: #a855f7; }
-        .badge-adm { background: #eab308; }
+        .badge-vip { background: #8b5cf6; }
+        .badge-adm { background: #10b981; }
         .grid-btn span.emoji {
             font-size: 1.4rem;
             display: block;
             margin-bottom: 2px;
         }
         .grid-btn span.name {
-            font-size: 0.68rem;
-            font-weight: 700;
+            font-size: 0.65rem;
+            font-weight: 800;
             color: #cbd5e1;
         }
 
-        /* Aviator Launcher Card */
+        /* Aviator Big Launcher Card */
         .aviator-card {
             background: linear-gradient(135deg, #1a0f14, #121422);
             border: 2px solid #e11d48;
             border-radius: 14px;
-            padding: 14px;
+            padding: 12px 14px;
             display: flex;
             align-items: center;
             gap: 12px;
@@ -191,8 +189,8 @@
             box-shadow: 0 4px 18px rgba(225, 29, 72, 0.25);
         }
         .aviator-icon-box {
-            width: 56px;
-            height: 56px;
+            width: 52px;
+            height: 52px;
             background: #e11d48;
             border-radius: 12px;
             display: flex;
@@ -201,19 +199,53 @@
         }
         .aviator-meta h4 {
             color: #ffffff;
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             font-weight: 900;
         }
         .aviator-meta p {
             color: #94a3b8;
-            font-size: 0.72rem;
+            font-size: 0.7rem;
             margin-top: 2px;
         }
         .play-indicator {
             margin-left: auto;
             color: #e11d48;
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             font-weight: bold;
+        }
+
+        /* Recent Big Wins Carousel */
+        .recent-wins-header {
+            font-size: 0.75rem;
+            font-weight: 900;
+            color: #10b981;
+            letter-spacing: 0.5px;
+            margin: 4px 0;
+        }
+        .recent-wins-scroll {
+            display: flex;
+            gap: 8px;
+            overflow-x: auto;
+            padding-bottom: 4px;
+        }
+        .recent-wins-scroll::-webkit-scrollbar { display: none; }
+        .win-card {
+            min-width: 90px;
+            background: #111420;
+            border: 1px solid #20273a;
+            border-radius: 8px;
+            padding: 6px;
+            text-align: center;
+        }
+        .win-card .game-name {
+            font-size: 0.65rem;
+            font-weight: 800;
+            color: #94a3b8;
+        }
+        .win-card .win-amt {
+            font-size: 0.72rem;
+            font-weight: 900;
+            color: #10b981;
         }
 
         /* Transition Spinner Loader */
@@ -290,7 +322,8 @@
             position: relative;
             flex: 1;
             width: 100%;
-            background: #000;
+            background: radial-gradient(circle at bottom left, rgba(225, 29, 72, 0.3) 0%, #06070c 80%);
+            border-bottom: 2px solid #e11d48;
             overflow: hidden;
         }
         canvas#aviator-cvs {
@@ -361,19 +394,19 @@
             transition: width 0.1s linear;
         }
 
-        /* Stacked Bet Panels (Top & Bottom Layout) */
+        /* Stacked Dual Bet Dock */
         .bet-dock {
-            background: #0d0f17;
+            background: #0d0f18;
             padding: 8px 10px;
             display: flex;
             flex-direction: column;
             gap: 6px;
-            border-top: 1px solid #1a1e2f;
+            border-top: 2px solid #e11d48;
         }
         .dock-box {
             width: 100%;
-            background: #131622;
-            border: 1px solid #20263b;
+            background: #111422;
+            border: 1px solid rgba(225, 29, 72, 0.4);
             border-radius: 10px;
             padding: 6px 10px;
             display: flex;
@@ -545,7 +578,7 @@
             display: flex;
             justify-content: space-around;
             padding: 8px 0;
-            background: #0f111a;
+            background: #0d1017;
             border-top: 1px solid #1a1e2f;
         }
         .nav-link {
@@ -564,33 +597,52 @@
             margin-bottom: 2px;
         }
 
-        /* Profile avatar */
-        .profile-pic-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 8px;
-            margin-bottom: 14px;
+        /* Spin Board Grid */
+        .spin-table-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 6px;
+            margin: 12px 0;
         }
-        .profile-pic-circle {
-            width: 75px;
-            height: 75px;
-            border-radius: 50%;
-            border: 3px solid #10b981;
-            object-fit: cover;
-            background: #1a1e2f;
+        .spin-cell {
+            background: #1a1e30;
+            border: 1px solid #2d3452;
+            border-radius: 8px;
+            padding: 8px 4px;
+            font-size: 0.75rem;
+            font-weight: 900;
+            color: #cbd5e1;
+        }
+        .spin-cell.active-spin {
+            border-color: #f59e0b;
+            background: #2b2210;
+            color: #fbbf24;
+            transform: scale(1.05);
+            box-shadow: 0 0 12px rgba(245, 158, 11, 0.7);
         }
 
-        /* Lucky Spin Wheel */
-        .spin-wheel-disk {
-            width: 140px;
-            height: 140px;
-            border-radius: 50%;
-            border: 6px dashed #f59e0b;
-            border-top-color: #e11d48;
-            border-right-color: #10b981;
-            margin: 15px auto;
-            transition: transform 3s cubic-bezier(0.12, 0.8, 0.3, 1);
+        /* Shamo Box Items */
+        .shamo-boxes-container {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 8px;
+            margin: 14px 0;
+        }
+        .shamo-box-item {
+            background: #151829;
+            border: 1px solid #333d5c;
+            border-radius: 8px;
+            padding: 12px 2px;
+            text-align: center;
+            font-size: 1.3rem;
+            cursor: pointer;
+        }
+        .admin-card-box {
+            background: #131622;
+            padding: 10px;
+            border-radius: 10px;
+            margin-bottom: 12px;
+            border: 1px solid #20263c;
         }
     </style>
 </head>
@@ -599,7 +651,7 @@
     <!-- Top Navbar -->
     <div class="top-navbar">
         <div class="brand-logo">
-            <h2>NIRO</h2>
+            <h2>Cassa<span>.BET</span></h2>
             <span class="tag">GAMES</span>
         </div>
         <div class="top-wallet">
@@ -613,46 +665,42 @@
 
     <!-- Marquee -->
     <div class="marquee-box" id="marquee-container">
-        <span class="marquee-text" id="marquee-text-content">🚀 ENKUAN WODE NIRO BET BESELAM METU! • AVIATOR MULTIPLIER 100X+ • FIRST DEPOSIT 30% BONUS</span>
+        <span class="marquee-text" id="marquee-text-content">🚀 ENKUAN WODE CASSA.BET BESELAM METU! • AVIATOR MULTIPLIER 100X+ • FIRST DEPOSIT 25% BONUS</span>
     </div>
 
-    <!-- Main App Container -->
+    <!-- Main Container -->
     <div class="main-content">
 
         <!-- LOBBY -->
         <div id="view-lobby">
-            <div class="hero-banner">
-                <h3>እንኳን ወደ NIRO GAMES በደህና መጡ! 🎰</h3>
-                <p>ጓደኛዎን ይጋብዙ፤ ነፃ ስፒን እና ቦነስ ይሸለሙ!</p>
-                <div class="hero-badges">
-                    <span>⚡ 97% RTP</span>
-                    <span>🎁 30% የመጀመሪያ ቦነስ</span>
-                    <span>🔒 አስተማማኝ</span>
-                </div>
+            <!-- Cassa Hero Promo -->
+            <div class="cassa-hero-banner">
+                <h3>🎁 15,000,000 ብር ሽልማት!</h3>
+                <p>ጓደኛዎን ይጋብዙ፤ ነፃ ስፒን እና ቦነስ ይሸለሙ • 98% RTP</p>
             </div>
 
-            <!-- 5 Buttons -->
+            <!-- 5 Essential Buttons: Spin, Shamo, Coupon, VIP, Admin -->
             <div class="icon-grid">
-                <div class="grid-btn" onclick="openClaimBox('spin')">
+                <div class="grid-btn" onclick="openSpinTableModal()">
                     <span class="badge-corner badge-new">NEW</span>
                     <span class="emoji">🎡</span>
                     <span class="name">Spin (3)</span>
                 </div>
-                <div class="grid-btn" onclick="openClaimBox('shamo')">
+                <div class="grid-btn" onclick="openShamoBoxesModal()">
                     <span class="badge-corner badge-live">LIVE</span>
                     <span class="emoji">🎁</span>
-                    <span class="name">Shamo (3)</span>
+                    <span class="name">Shamo</span>
                 </div>
                 <div class="grid-btn" onclick="openModal('user-coupon-modal')">
                     <span class="emoji">🎟️</span>
                     <span class="name">Coupon</span>
                 </div>
-                <div class="grid-btn" onclick="openModal('vip-modal')">
+                <div class="grid-btn" onclick="openVipModal()">
                     <span class="badge-corner badge-vip">VIP</span>
                     <span class="emoji">👑</span>
                     <span class="name">VIP</span>
                 </div>
-                <div class="grid-btn" onclick="openModal('admin-modal')">
+                <div class="grid-btn" id="adm-main-btn" onclick="openModal('admin-modal')">
                     <span class="badge-corner badge-adm">ADM</span>
                     <span class="emoji">⚙️</span>
                     <span class="name">Admin</span>
@@ -673,7 +721,28 @@
                 <div class="play-indicator">▶</div>
             </div>
 
-            <!-- Pure hidden persistent code container (wont affect game or graph) -->
+            <!-- Recent Big Wins -->
+            <div class="recent-wins-header">🔥 RECENT BIG WINS</div>
+            <div class="recent-wins-scroll">
+                <div class="win-card">
+                    <div class="game-name">Aviator</div>
+                    <div class="win-amt">Br 45,210</div>
+                </div>
+                <div class="win-card">
+                    <div class="game-name">Chicken Road</div>
+                    <div class="win-amt">Br 37,840</div>
+                </div>
+                <div class="win-card">
+                    <div class="game-name">Fast Keno</div>
+                    <div class="win-amt">Br 54,120</div>
+                </div>
+                <div class="win-card">
+                    <div class="game-name">Rabbit Road</div>
+                    <div class="win-amt">Br 29,600</div>
+                </div>
+            </div>
+
+            <!-- Hidden Persistent Anchor -->
             <div id="hidden-runtime-anchor" style="display:none;"></div>
         </div>
 
@@ -685,7 +754,7 @@
                 <span style="font-size:0.75rem; color:#10b981; font-weight:bold;">● Live</span>
             </div>
 
-            <!-- History -->
+            <!-- Multipliers ribbon -->
             <div class="history-ribbon" id="history-pills">
                 <span class="pill-item c-blue">1.19x</span>
                 <span class="pill-item c-purple">2.39x</span>
@@ -695,7 +764,7 @@
                 <span class="pill-item c-purple">4.85x</span>
             </div>
 
-            <!-- Stage -->
+            <!-- Canvas Arena -->
             <div class="canvas-container">
                 <canvas id="aviator-cvs"></canvas>
 
@@ -704,7 +773,7 @@
                     <div class="crash-state-msg" id="flew-away-msg">FLEW AWAY!</div>
                 </div>
 
-                <!-- UFC Between-Round Wait -->
+                <!-- UFC Between-Round Wait Screen -->
                 <div class="ufc-screen" id="ufc-wait-screen">
                     <div class="ufc-title">UFC <span>× Aviator</span></div>
                     <div style="font-size:0.65rem; font-weight:800; color:#64748b; letter-spacing:2px;">OFFICIAL PARTNERS • SPRIBE</div>
@@ -773,24 +842,76 @@
         </div>
     </div>
 
-    <!-- Spinner Modal for Launch -->
+    <!-- Connecting Spinner Modal -->
     <div id="game-connecting-loader">
         <div class="spinner-round"></div>
         <h2 style="color:#e11d48; font-style:italic; font-weight:900; margin-bottom:8px;">Aviator</h2>
         <p style="color:#94a3b8; font-size:0.8rem; font-weight:900; letter-spacing:1px;">CONNECTING TO SERVER...</p>
     </div>
 
-    <!-- Wheel Spin Modal -->
-    <div class="full-modal" id="spin-wheel-modal" style="display:none; align-items:center; justify-content:center;">
-        <div style="background:#131624; border:1px solid #283049; border-radius:14px; padding:20px; width:85%; max-width:320px; text-align:center;">
-            <h3 id="wheel-modal-title" style="color:#f59e0b; font-weight:900;">🎡 Lucky Wheel</h3>
-            <div id="active-wheel-disk" class="spin-wheel-disk"></div>
-            <button class="btn-primary-action" style="width:100%; margin-top:8px;" onclick="executeLuckySpin()">SPIN</button>
-            <button onclick="closeModal('spin-wheel-modal')" style="background:transparent; border:none; color:#64748b; font-size:0.8rem; margin-top:10px; cursor:pointer;">Close</button>
+    <!-- Spin Table Board Modal -->
+    <div class="full-modal" id="spin-table-modal" style="display:none; align-items:center; justify-content:center; z-index:150;">
+        <div style="background:#131624; border:2px solid #f59e0b; border-radius:16px; padding:16px; width:90%; max-width:340px; text-align:center;">
+            <div style="display:flex; justify-content:space-between; align-items:center;">
+                <h3 style="color:#f59e0b; font-weight:900;">🎡 LUCKY TABLE SPIN</h3>
+                <button class="btn-close-modal" onclick="closeModal('spin-table-modal')">✕</button>
+            </div>
+            <p style="font-size:0.75rem; color:#94a3b8; margin-top:4px;">ነፃ ስፒኖች፦ <span id="spin-free-count" style="color:#10b981; font-weight:900;">3</span></p>
+            <div class="spin-table-grid">
+                <div class="spin-cell" id="sc-0">0 ብር<br><small>90%</small></div>
+                <div class="spin-cell" id="sc-1">10 ብር<br><small>5%</small></div>
+                <div class="spin-cell" id="sc-2">20 ብር<br><small>3%</small></div>
+                <div class="spin-cell" id="sc-3">3 Free Spin<br><small>50%</small></div>
+                <div class="spin-cell" id="sc-4">500 ብር<br><small>0.3%</small></div>
+                <div class="spin-cell" id="sc-5">1,000 ብር<br><small>0.2%</small></div>
+                <div class="spin-cell" id="sc-6" style="grid-column: span 3; color:#f43f5e;">10,000 ETB JACKPOT<br><small>0.1%</small></div>
+            </div>
+            <button class="btn-primary-action" style="width:100%; font-weight:900;" onclick="runTableSpin()">START SPIN</button>
         </div>
     </div>
 
-    <!-- DEPOSIT MODAL -->
+    <!-- Shamo Boxes Modal -->
+    <div class="full-modal" id="shamo-boxes-modal" style="display:none; align-items:center; justify-content:center; z-index:150;">
+        <div style="background:#0c0d18; border:2px solid #f59e0b; border-radius:18px; padding:18px; width:92%; max-width:340px; text-align:center;">
+            <div style="display:flex; justify-content:space-between; align-items:center;">
+                <h3 style="color:#f59e0b; font-weight:900;">🎁 SHAMO MYSTERY BOX</h3>
+                <button class="btn-close-modal" onclick="closeModal('shamo-boxes-modal')">✕</button>
+            </div>
+            <p style="font-size:0.72rem; color:#94a3b8; margin-top:6px;">ሳጥኖቹን በመንካት ቦነስዎን ይውሰዱ፦</p>
+            <div class="shamo-boxes-container">
+                <div class="shamo-box-item" onclick="pickShamoBox(1)">🎁</div>
+                <div class="shamo-box-item" onclick="pickShamoBox(2)">🎁</div>
+                <div class="shamo-box-item" onclick="pickShamoBox(3)">🎁</div>
+                <div class="shamo-box-item" onclick="pickShamoBox(4)">🎁</div>
+                <div class="shamo-box-item" onclick="pickShamoBox(5)">🎁</div>
+                <div class="shamo-box-item" onclick="pickShamoBox(6)">🎁</div>
+                <div class="shamo-box-item" onclick="pickShamoBox(7)">🎁</div>
+                <div class="shamo-box-item" onclick="pickShamoBox(8)">🎁</div>
+                <div class="shamo-box-item" onclick="pickShamoBox(9)">🎁</div>
+                <div class="shamo-box-item" onclick="pickShamoBox(10)">🎁</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- VIP 7-Day Modal -->
+    <div class="full-modal" id="vip-tracker-modal" style="display:none; z-index:150;">
+        <div class="modal-header">
+            <h3>👑 VIP REBATE DASHBOARD</h3>
+            <button class="btn-close-modal" onclick="closeModal('vip-tracker-modal')">✕</button>
+        </div>
+        <div style="background:#151226; border:1px solid #8b5cf6; border-radius:12px; padding:14px; text-align:center;">
+            <h4 style="color:#c084fc; font-weight:900;">የ 7 ቀን የ VIP 10% ተመላሽ ቆጣሪ</h4>
+            <div id="vip-timer-display" style="font-size:1.6rem; font-weight:900; color:#ffffff; margin:10px 0;">07d : 00h : 00m : 00s</div>
+            <div style="background:#090a12; border-radius:8px; padding:8px; margin:10px 0; font-size:0.8rem; color:#94a3b8; display:flex; justify-content:space-between;">
+                <span>የተጠራቀመ ቦነስ፦</span>
+                <span id="vip-accumulated-bal" style="color:#10b981; font-weight:900;">0.00 ETB</span>
+            </div>
+            <button id="btn-vip-start" onclick="startVip7DayCycle()" class="btn-primary-action" style="background:#8b5cf6; width:100%; font-weight:900;">የ 7 ቀን VIP ጀምር</button>
+            <button id="btn-vip-claim" onclick="claimVipBonus()" class="btn-primary-action" style="background:#10b981; width:100%; font-weight:900; display:none; margin-top:8px;">ቦነሱን ውሰድ (CLAIM)</button>
+        </div>
+    </div>
+
+    <!-- DEPOSIT MODAL WITH TELEBIRR (0974107425 Mulualem) -->
     <div class="full-modal" id="deposit-modal">
         <div class="modal-header">
             <h3>💳 ገንዘብ ማስገቢያ (Deposit)</h3>
@@ -799,10 +920,10 @@
         </div>
 
         <div style="background:#131622; padding:12px; border-radius:10px; margin-bottom:12px; border:1px solid #23283c;">
-            <p style="font-size:0.8rem; color:#94a3b8; margin-bottom:6px;">የቴሌብር አካውንት (ስም፦ ሙሉዓለም)፦</p>
+            <p style="font-size:0.8rem; color:#94a3b8; margin-bottom:6px;">የቴሌብር አካውንት (ስም፦ Mulualem)፦</p>
             <div style="display:flex; justify-content:space-between; align-items:center; background:#090a10; padding:10px; border-radius:8px; border:1px solid #333a52;">
                 <span id="telebirr-num" style="font-size:1.1rem; font-weight:900; color:#38bdf8;">0974107425</span>
-                <button onclick="copyTelebirr()" style="background:#10b981; border:none; color:#fff; padding:6px 14px; border-radius:6px; font-weight:bold; cursor:pointer;">Copy</button>
+                <button onclick="copyTelebirr()" style="background:#10b981; border:none; color:#000; padding:6px 14px; border-radius:6px; font-weight:bold; cursor:pointer;">Copy</button>
             </div>
             <p style="font-size:0.75rem; color:#f59e0b; margin-top:8px;">⚠️ በዚህ ቁጥር ብሩን ልከው የደረሰዎትን ሙሉ SMS ከታች ያስገቡ።</p>
         </div>
@@ -813,54 +934,89 @@
         </div>
         <div class="form-group">
             <label>የቴሌብር ሙሉ መልዕክት (Full SMS Confirmation)</label>
-            <textarea id="dep-sms-msg" rows="3" placeholder="ከቴሌብር የደረሰዎትን ሙሉ የክፍያ መልዕክት እዚህ Paste ያድርጉ..."></textarea>
+            <textarea id="dep-sms-msg" rows="3" placeholder="ከቴሌብር የደረሰዎትን ሙሉ SMS እዚህ Paste ያድርጉ..."></textarea>
             <div id="dep-status-indicator" style="margin-top:4px; font-size:0.75rem; font-weight:bold; color:#f59e0b;">Status: Ready</div>
         </div>
         <button class="btn-primary-action" onclick="verifyAndDeposit()">Paid / አረጋግጥ</button>
     </div>
 
-    <!-- ADMIN SUITE -->
+    <!-- MASTER ADMIN SUITE -->
     <div class="full-modal" id="admin-modal">
         <div class="modal-header">
             <h3>👑 Master Admin Suite</h3>
             <button class="btn-close-modal" onclick="closeModal('admin-modal')">✕</button>
         </div>
 
+        <!-- Aviator Force Stop Control -->
+        <div class="admin-card-box">
+            <h4 style="color:#ef4444; font-size:0.85rem; margin-bottom:6px;">✈️ Aviator Live Stop Controller</h4>
+            <button onclick="forceCrashAviator()" class="btn-primary-action" style="background:#ef4444; width:100%;">STOP & CRASH NOW</button>
+        </div>
+
         <!-- 10-Round Aviator Programmer -->
-        <div style="background:#131622; padding:10px; border-radius:10px; margin-bottom:12px; border:1px solid #20263c;">
+        <div class="admin-card-box">
             <h4 style="color:#38bdf8; font-size:0.85rem; margin-bottom:8px;">🎯 10-Round Aviator Multiplier Plan</h4>
             <div style="display:grid; grid-template-columns:1fr 1fr; gap:6px;" id="rounds-inputs-container"></div>
             <button class="btn-primary-action" style="width:100%; margin-top:8px;" onclick="savePlannedRounds()">💾 Save Plan</button>
         </div>
 
-        <!-- Shamo & Coupon Generator -->
-        <div style="background:#131622; padding:10px; border-radius:10px; margin-bottom:12px; border:1px solid #20263c;">
-            <h4 style="color:#c084fc; font-size:0.85rem; margin-bottom:8px;">🎟️ Coupon & Shamo Pool Generator</h4>
+        <!-- Withdrawal Requests Queue -->
+        <div class="admin-card-box">
+            <h4 style="color:#f59e0b; font-size:0.85rem; margin-bottom:6px;">💸 Withdrawal Requests Queue</h4>
+            <div id="adm-wd-box" style="max-height:120px; overflow-y:auto; font-size:0.75rem;"></div>
+        </div>
+
+        <!-- Deposit Methods Manager -->
+        <div class="admin-card-box">
+            <h4 style="color:#38bdf8; font-size:0.85rem; margin-bottom:6px;">💳 Deposit Method Manager</h4>
+            <div id="adm-dep-list" style="font-size:0.75rem; margin-bottom:6px;"></div>
+            <div style="display:flex; gap:4px; margin-bottom:4px;">
+                <input type="text" id="adm-new-dep-num" placeholder="09xxxxxxxx" style="flex:1;">
+                <input type="text" id="adm-new-dep-name" placeholder="Name" style="flex:1;">
+            </div>
+            <button onclick="addDepositMethod()" class="btn-primary-action" style="width:100%;">Save Deposit Number</button>
+        </div>
+
+        <!-- Shamo 10-Code Configuration -->
+        <div class="admin-card-box">
+            <h4 style="color:#a855f7; font-size:0.85rem; margin-bottom:6px;">🎁 Shamo Pool (1-10 Codes)</h4>
+            <div style="display:flex; gap:4px; margin-bottom:4px;">
+                <input type="text" id="adm-sh-code" placeholder="Code (e.g. SHAMO1)" style="flex:1;">
+                <input type="number" id="adm-sh-amt" placeholder="Birr" style="width:65px;">
+                <input type="number" id="adm-sh-limit" placeholder="Max" style="width:50px;">
+            </div>
+            <div style="display:flex; gap:4px;">
+                <button onclick="saveShamoTier()" class="btn-primary-action" style="flex:2;">Save Code</button>
+                <button onclick="toggleShamoSwitch()" id="adm-shamo-btn" class="btn-primary-action" style="flex:1; background:#ef4444;">POOL OFF</button>
+            </div>
+        </div>
+
+        <!-- Coupon Generator -->
+        <div class="admin-card-box">
+            <h4 style="color:#c084fc; font-size:0.85rem; margin-bottom:8px;">🎟️ Create Expiring Coupon</h4>
             <div class="form-group">
-                <label>Code Name</label>
-                <input type="text" id="adm-coupon-code" placeholder="e.g. VIP2026, SHAMO10">
+                <input type="text" id="adm-coupon-code" placeholder="Coupon Name">
             </div>
             <div class="form-group">
-                <label>Birr Amount (ETB)</label>
-                <input type="number" id="adm-coupon-amt" placeholder="50">
+                <input type="number" id="adm-coupon-amt" placeholder="Amount (ETB)">
             </div>
-            <div class="form-group">
-                <label>Type</label>
-                <select id="adm-coupon-type">
-                    <option value="NORMAL">Normal Coupon</option>
-                    <option value="SHAMO">Shamo</option>
-                    <option value="VIP">VIP Exclusive</option>
-                    <option value="SPAIN">Spain Promotion</option>
-                </select>
+            <button class="btn-primary-action" style="background:#8b5cf6; width:100%;" onclick="createAdminCoupon()">Create Coupon</button>
+        </div>
+
+        <!-- Add Sub-Admin -->
+        <div class="admin-card-box">
+            <h4 style="color:#10b981; font-size:0.85rem; margin-bottom:6px;">👤 Add Sub-Admin</h4>
+            <div style="display:flex; gap:4px;">
+                <input type="text" id="adm-sub-input" placeholder="Telegram ID or username" style="flex:1;">
+                <button onclick="addSubAdmin()" class="btn-primary-action" style="flex:1;">Add Admin</button>
             </div>
-            <button class="btn-primary-action" style="background:#8b5cf6; width:100%;" onclick="createAdminCoupon()">Create Code</button>
         </div>
 
         <!-- HTML Code Injector -->
-        <div style="background:#131622; padding:10px; border-radius:10px; margin-bottom:12px; border:1px solid #20263c;">
+        <div class="admin-card-box">
             <h4 style="color:#10b981; font-size:0.85rem; margin-bottom:8px;">💻 HTML Code Injector (Reload ቢሆን የማይጠፋ)</h4>
             <div class="form-group">
-                <textarea id="adm-html-code" rows="4" placeholder="የ JavaScript ወይ HTML ኮድ እዚህ ያስገቡ..."></textarea>
+                <textarea id="adm-html-code" rows="4" placeholder="ኮድ እዚህ ያስገቡ..."></textarea>
             </div>
             <button class="btn-primary-action" style="width:100%;" onclick="saveAndClearInjector()">Save & Apply Code</button>
         </div>
@@ -872,21 +1028,11 @@
             <h3>👤 መለያዬ (My Profile)</h3>
             <button class="btn-close-modal" onclick="closeModal('profile-modal')">✕</button>
         </div>
-        <div class="profile-pic-container">
-            <img id="prof-user-avatar" src="https://api.dicebear.com/7.x/bottts/svg?seed=Niro" class="profile-pic-circle">
-            <input type="file" id="prof-file-input" accept="image/*" style="display:none;">
-            <div style="display:flex; gap:6px;">
-                <button onclick="document.getElementById('prof-file-input').click()" style="background:#20263c; border:1px solid #333d5c; color:#fff; font-size:0.75rem; font-weight:bold; padding:4px 10px; border-radius:6px; cursor:pointer;">Change Photo</button>
-                <button onclick="changeProfileName()" style="background:#20263c; border:1px solid #333d5c; color:#fff; font-size:0.75rem; font-weight:bold; padding:4px 10px; border-radius:6px; cursor:pointer;">Edit Name</button>
-            </div>
-            <h4 id="prof-user-name" style="color:#ffffff; font-weight:900; margin-top:2px;">Niro Player</h4>
-        </div>
         <div style="background:#131622; padding:12px; border-radius:10px; margin-bottom:12px; border:1px solid #23283c;">
             <p><strong>Telegram ID:</strong> <span id="prof-tg-id">8797798511</span></p>
             <p style="margin-top:6px;"><strong>የሂሳብ መጠን:</strong> <span id="prof-balance" style="color:#10b981; font-weight:900;">15.00 ETB</span></p>
             <p style="margin-top:6px;"><strong>ደረጃ:</strong> <span style="color:#f59e0b;">Standard Player</span></p>
         </div>
-        <div id="vip-tracker-box"></div>
         <button class="btn-primary-action" style="background:#ef4444;" onclick="openModal('withdraw-modal'); closeModal('profile-modal');">ገንዘብ ማውጫ (Withdraw)</button>
     </div>
 
@@ -914,19 +1060,6 @@
         <button class="btn-primary-action" onclick="submitWithdraw()">ማውጫ ጠይቅ</button>
     </div>
 
-    <!-- VIP MODAL -->
-    <div class="full-modal" id="vip-modal">
-        <div class="modal-header">
-            <h3>👑 VIP Club</h3>
-            <button class="btn-close-modal" onclick="closeModal('vip-modal')">✕</button>
-        </div>
-        <div class="form-group">
-            <label>VIP የመግቢያ ኮድ ያስገቡ</label>
-            <input type="text" id="vip-pass-code" placeholder="VIP ኮድ...">
-        </div>
-        <button class="btn-primary-action" style="background:#a855f7;" onclick="redeemVipCode()">ክፈት (Unlock)</button>
-    </div>
-
     <!-- USER COUPON MODAL -->
     <div class="full-modal" id="user-coupon-modal">
         <div class="modal-header">
@@ -950,7 +1083,7 @@
             <span class="icon">💳</span>
             <span>Deposit</span>
         </div>
-        <div class="nav-link" onclick="openClaimBox('shamo')">
+        <div class="nav-link" onclick="generateInviteLink()">
             <span class="icon">👥</span>
             <span>Invite</span>
         </div>
@@ -961,112 +1094,70 @@
     </div>
 
     <script>
+        // Telegram WebApp Setup
+        let clientTgId = "8797798511";
+        let clientTgUser = "";
         if (window.Telegram && window.Telegram.WebApp) {
             window.Telegram.WebApp.ready();
             window.Telegram.WebApp.expand();
             if (window.Telegram.WebApp.initDataUnsafe && window.Telegram.WebApp.initDataUnsafe.user) {
-                document.getElementById("prof-tg-id").innerText = window.Telegram.WebApp.initDataUnsafe.user.id;
+                clientTgId = String(window.Telegram.WebApp.initDataUnsafe.user.id);
+                clientTgUser = (window.Telegram.WebApp.initDataUnsafe.user.username || "").toLowerCase();
+                document.getElementById("prof-tg-id").innerText = clientTgId;
             }
         }
+        const uScope = "semuni_" + clientTgId + "_";
 
-        // Web Audio Synthesizer (Realistic Aviator Sounds)
-        let actx = null;
-        let flightOsc = null;
-        let flightGain = null;
-        let isGameAudioActive = false;
-
-        function startAudioEngine() {
-            try {
-                if (!actx) actx = new (window.AudioContext || window.webkitAudioContext)();
-                if (actx.state === 'suspended') actx.resume();
-
-                flightOsc = actx.createOscillator();
-                flightGain = actx.createGain();
-
-                flightOsc.type = "sawtooth";
-                flightOsc.frequency.setValueAtTime(80, actx.currentTime);
-                flightGain.gain.setValueAtTime(0.04, actx.currentTime);
-
-                flightOsc.connect(flightGain);
-                flightGain.connect(actx.destination);
-                flightOsc.start();
-                isGameAudioActive = true;
-            } catch(e) {}
+        // Admin Security: @Niro_X12 or ID 8797798511
+        let extraAdmins = JSON.parse(localStorage.getItem("semuni_extra_admins") || "[]");
+        function isUserAdmin() {
+            if (clientTgUser === "niro_x12" || clientTgId === "8797798511") return true;
+            if (extraAdmins.includes(clientTgId) || extraAdmins.includes(clientTgUser)) return true;
+            return false;
+        }
+        if (!isUserAdmin()) {
+            document.getElementById("adm-main-btn").style.display = "none";
         }
 
-        function updateAudioPitch(mult) {
-            if (flightOsc && isGameAudioActive && actx) {
-                try {
-                    flightOsc.frequency.setValueAtTime(80 + (mult * 25), actx.currentTime);
-                } catch(e) {}
-            }
-        }
-
-        function stopAudioEngine() {
-            if (flightOsc) {
-                try {
-                    flightOsc.stop();
-                    flightOsc.disconnect();
-                } catch(e) {}
-                flightOsc = null;
-            }
-            isGameAudioActive = false;
-        }
-
-        function playCashoutSound() {
-            if (!isGameAudioActive) return;
-            try {
-                let osc = actx.createOscillator();
-                let g = actx.createGain();
-                osc.type = "sine";
-                osc.frequency.setValueAtTime(587.33, actx.currentTime);
-                osc.frequency.setValueAtTime(880, actx.currentTime + 0.1);
-                g.gain.setValueAtTime(0.15, actx.currentTime);
-                g.gain.linearRampToValueAtTime(0.01, actx.currentTime + 0.35);
-                osc.connect(g);
-                g.connect(actx.destination);
-                osc.start();
-                osc.stop(actx.currentTime + 0.35);
-            } catch(e) {}
-        }
-
-        function playCrashSound() {
-            if (!isGameAudioActive) return;
-            try {
-                let osc = actx.createOscillator();
-                let g = actx.createGain();
-                osc.type = "square";
-                osc.frequency.setValueAtTime(120, actx.currentTime);
-                osc.frequency.exponentialRampToValueAtTime(30, actx.currentTime + 0.5);
-                g.gain.setValueAtTime(0.2, actx.currentTime);
-                g.gain.linearRampToValueAtTime(0.01, actx.currentTime + 0.5);
-                osc.connect(g);
-                g.connect(actx.destination);
-                osc.start();
-                osc.stop(actx.currentTime + 0.5);
-            } catch(e) {}
-        }
-
-        // Welcome Bonus: 15 ETB initial balance
-        let balance = parseFloat(localStorage.getItem("niro_bal"));
+        // Multi-Account Independent Balance: 15 ETB bonus
+        let balance = parseFloat(localStorage.getItem(uScope + "balance"));
         if (isNaN(balance)) {
             balance = 15.00;
-            localStorage.setItem("niro_bal", balance);
+            localStorage.setItem(uScope + "balance", balance);
+            localStorage.setItem(uScope + "free_spins", "3");
+            localStorage.setItem(uScope + "is_first_dep", "true");
         }
 
         function updateBal() {
             document.getElementById("global-balance").innerText = balance.toFixed(2);
             document.getElementById("prof-balance").innerText = balance.toFixed(2) + " ETB";
-            localStorage.setItem("niro_bal", balance);
+            localStorage.setItem(uScope + "balance", balance);
         }
         updateBal();
 
         // Modals
         function openModal(id) {
             document.getElementById(id).style.display = "flex";
+            if (id === "admin-modal") {
+                renderAdminWdList();
+                renderAdminDepList();
+            }
         }
         function closeModal(id) {
             document.getElementById(id).style.display = "none";
+        }
+
+        function openSpinTableModal() {
+            let c = parseInt(localStorage.getItem(uScope + "free_spins") || "3");
+            document.getElementById("spin-free-count").innerText = c;
+            openModal("spin-table-modal");
+        }
+        function openShamoBoxesModal() {
+            openModal("shamo-boxes-modal");
+        }
+        function openVipModal() {
+            openModal("vip-tracker-modal");
+            syncVipClock();
         }
 
         // Telebirr Copy
@@ -1076,185 +1167,219 @@
             alert("የቴሌብር ቁጥር " + num + " ተገልብጧል (Copied)!");
         }
 
-        // Telebirr Deposit Verification with Full Message
+        // 20-Minute Telebirr Deposit Verification
+        let activeDepositMethods = JSON.parse(localStorage.getItem("semuni_dep_methods") || JSON.stringify([
+            { type: "Telebirr", number: "0974107425", name: "Mulualem" }
+        ]));
+
         function verifyAndDeposit() {
-            let rawMsg = document.getElementById("dep-sms-msg").value.trim();
-            let amt = parseFloat(document.getElementById("dep-amount").value) || 0;
+            let rawSms = document.getElementById("dep-sms-msg").value.trim();
+            let depAmt = parseFloat(document.getElementById("dep-amount").value) || 0;
             let statusInd = document.getElementById("dep-status-indicator");
 
-            if (rawMsg.length < 15) {
-                return alert("እባክዎ ከቴሌብር የደረሰዎትን ሙሉ መልዕክት ያስገቡ!");
-            }
-            if (amt <= 0) {
-                return alert("እባክዎ ትክክለኛ የብር መጠን ያስገቡ!");
-            }
+            if (depAmt <= 0) return alert("❌ እባክዎ ትክክለኛ የብር መጠን ያስገቡ!");
+            if (rawSms.length < 20) return alert("❌ እባክዎ ከቴሌብር የደረሰዎትን ሙሉ SMS ያስገቡ!");
+
+            let activeAcc = activeDepositMethods[0] || { number: "0974107425", name: "Mulualem" };
+            let toMe = rawSms.includes(activeAcc.number) || rawSms.toLowerCase().includes(activeAcc.name.toLowerCase());
+            let txnMatch = rawSms.match(/[A-Z0-9]{8,12}/);
+            let amtMatch = rawSms.includes(depAmt.toString()) || rawSms.includes(depAmt.toFixed(2));
+            let usedCache = JSON.parse(localStorage.getItem("semuni_used_txns") || "[]");
+            let smsHash = btoa(encodeURIComponent(rawSms.substring(0, 32)));
 
             statusInd.innerHTML = "Status: <span style='color:#f59e0b;'>Pending Verification...</span>";
+            alert("⏳ የ 20 ደቂቃ የክፍያ ማረጋገጫ ተጀምሯል! ደረጃ፦ PENDING");
+            closeModal("deposit-modal");
 
             setTimeout(() => {
-                let verifiedList = JSON.parse(localStorage.getItem("niro_used_sms") || "[]");
-                let hash = btoa(encodeURIComponent(rawMsg.substring(0, 35)));
+                if (!toMe || !txnMatch || !amtMatch || usedCache.includes(smsHash)) {
+                    alert("❌ የተሳሳተ ወይም ሀሰተኛ ክፍያ፦ በቴሌብር ማረጋገጥ አልተቻለም!");
+                } else {
+                    usedCache.push(smsHash);
+                    localStorage.setItem("semuni_used_txns", JSON.stringify(usedCache));
 
-                if (verifiedList.includes(hash)) {
-                    statusInd.innerHTML = "Status: <span style='color:#ef4444;'>Cancelled (Already Used)</span>";
-                    return alert("ይህ የክፍያ መልዕክት ከዚህ በፊት ጥቅም ላይ ውሏል!");
+                    let isFirst = localStorage.getItem(uScope + "is_first_dep") === "true";
+                    let cred = depAmt;
+                    if (isFirst) {
+                        cred += (depAmt * 0.25);
+                        localStorage.setItem(uScope + "is_first_dep", "false");
+                        alert(`🎉 ክፍያው ተረጋግጧል፦ ${depAmt} ብር + 25% የመጀመሪያ ዲፖዚት ቦነስ ገብቷል!`);
+                    } else {
+                        alert(`🎉 ክፍያው ተረጋግጧል፦ ${depAmt} ብር በሂሳብዎ ላይ ተደምሯል!`);
+                    }
+                    balance += cred;
+                    updateBal();
+
+                    // VIP 10%
+                    let vipExp = parseInt(localStorage.getItem(uScope + "vip_expire") || "0");
+                    if (Date.now() < vipExp) {
+                        let r = parseFloat(localStorage.getItem(uScope + "vip_rebate") || "0");
+                        localStorage.setItem(uScope + "vip_rebate", r + (depAmt * 0.10));
+                    }
                 }
-
-                verifiedList.push(hash);
-                localStorage.setItem("niro_used_sms", JSON.stringify(verifiedList));
-                balance += amt;
-                updateBal();
-                statusInd.innerHTML = "Status: <span style='color:#10b981;'>Approved & Credited</span>";
-                alert(`✅ የ ${amt} ብር ክፍያዎ በቴሌብር በስኬት ተረጋግጦ በሂሳብዎ ላይ ተደምሯል!`);
-                document.getElementById("dep-sms-msg").value = "";
-                closeModal("deposit-modal");
-            }, 1000);
+            }, 3500);
         }
 
+        // Withdraw & Admin Queue
         function submitWithdraw() {
             let amt = parseFloat(document.getElementById("w-amount").value) || 0;
-            if (amt > balance) return alert("በቂ ያልሆነ የሂሳብ መጠን!");
-            if (amt < 50) return alert("ዝቅተኛው የማውጫ መጠን 50 ብር ነው!");
+            let acc = document.getElementById("w-account").value.trim();
+            if (amt <= 0 || amt > balance) return alert("❌ በቂ ያልሆነ የሂሳብ መጠን!");
+            if (amt < 50) return alert("❌ ዝቅተኛው የማውጫ መጠን 50 ብር ነው!");
+
             balance -= amt;
             updateBal();
-            alert(`✅ የ ${amt} ብር ማውጫ ጥያቄዎ በተሳካ ሁኔታ ተልኳል!`);
+
+            let q = JSON.parse(localStorage.getItem("semuni_withdraw_requests") || "[]");
+            q.push({
+                id: "WD_" + Date.now(),
+                uid: clientTgId,
+                name: "Player",
+                account: acc,
+                amount: amt,
+                status: "PENDING"
+            });
+            localStorage.setItem("semuni_withdraw_requests", JSON.stringify(q));
             closeModal("withdraw-modal");
+            alert("✅ የማውጫ ጥያቄዎ ቀርቧል! ደረጃ፦ PENDING APPROVAL");
         }
 
-        // Admin Save & Clear Injector Logic
-        function saveAndClearInjector() {
-            let code = document.getElementById("adm-html-code").value;
-            if (!code || code.trim().length === 0) {
-                return alert("እባክዎ ኮድ ያስገቡ!");
-            }
-            localStorage.setItem("niro_persistent_script", code);
-            executePersistentCode(code);
-            document.getElementById("adm-html-code").value = "";
-            alert("✅ File Successfully Saved to Storage! (The editor has been cleared for your next file).");
-        }
+        // Table Spin Logic
+        let isSpinRunning = false;
+        function runTableSpin() {
+            let c = parseInt(localStorage.getItem(uScope + "free_spins") || "0");
+            if (c <= 0 && balance < 10) return alert("❌ ነፃ ስፒን አልቀረዎትም! ለማሽከርከር 10 ብር ያስፈልጋል።");
+            if (isSpinRunning) return;
+            isSpinRunning = true;
 
-        function executePersistentCode(code) {
-            if (!code) return;
-            try {
-                let anchor = document.getElementById("hidden-runtime-anchor");
-                anchor.innerHTML = "";
-                let wrapper = document.createElement("div");
-                wrapper.innerHTML = code;
-
-                // Move script tags to head to execute cleanly without breaking the canvas/graph
-                let scripts = wrapper.querySelectorAll("script");
-                scripts.forEach(s => {
-                    let newScript = document.createElement("script");
-                    newScript.text = s.innerText;
-                    document.head.appendChild(newScript);
-                    s.remove();
-                });
-                anchor.appendChild(wrapper);
-            } catch(e) {
-                console.error("Injected script error:", e);
-            }
-        }
-
-        // On reload, automatically load saved script
-        let savedPersistentCode = localStorage.getItem("niro_persistent_script");
-        if (savedPersistentCode) {
-            executePersistentCode(savedPersistentCode);
-        }
-
-        // Profile Avatar Upload & Name Change
-        document.getElementById("prof-file-input").addEventListener("change", function(e) {
-            let file = e.target.files[0];
-            if (file) {
-                let reader = new FileReader();
-                reader.onload = function(evt) {
-                    let b64 = evt.target.result;
-                    document.getElementById("prof-user-avatar").src = b64;
-                    localStorage.setItem("niro_avatar_b64", b64);
-                };
-                reader.readAsDataURL(file);
-            }
-        });
-
-        if (localStorage.getItem("niro_avatar_b64")) {
-            document.getElementById("prof-user-avatar").src = localStorage.getItem("niro_avatar_b64");
-        }
-        if (localStorage.getItem("niro_player_name")) {
-            document.getElementById("prof-user-name").innerText = localStorage.getItem("niro_player_name");
-        }
-
-        function changeProfileName() {
-            let cur = localStorage.getItem("niro_player_name") || "Niro Player";
-            let val = prompt("ስምዎን ወይም Username ያስገቡ:", cur);
-            if (val && val.trim().length > 0) {
-                localStorage.setItem("niro_player_name", val.trim());
-                document.getElementById("prof-user-name").innerText = val.trim();
-            }
-        }
-
-        // VIP 7-Days & Percentage Counter
-        function redeemVipCode() {
-            let pass = document.getElementById("vip-pass-code").value.trim().toUpperCase();
-            if (pass === "VIP777" || pass === "VIP2026") {
-                let expire = Date.now() + (7 * 24 * 60 * 60 * 1000);
-                localStorage.setItem("niro_vip_expire_date", expire);
-                balance += 50;
-                updateBal();
-                alert("👑 VIP በተሳካ ሁኔታ ተከፍቷል! ለ 7 ቀናት የሚቆይ ቦነስ ገብቷል።");
-                closeModal("vip-modal");
-                updateVipTracker();
+            if (c > 0) {
+                localStorage.setItem(uScope + "free_spins", c - 1);
+                document.getElementById("spin-free-count").innerText = c - 1;
             } else {
-                alert("❌ የተሳሳተ የ VIP ኮድ!");
+                balance -= 10;
+                updateBal();
             }
+
+            let r = Math.random() * 100;
+            let cell = 0;
+            let prize = 0;
+            if (r < 0.1) { cell = 6; prize = 10000; }
+            else if (r < 0.3) { cell = 5; prize = 1000; }
+            else if (r < 0.6) { cell = 4; prize = 500; }
+            else if (r < 3.6) { cell = 2; prize = 20; }
+            else if (r < 8.6) { cell = 1; prize = 10; }
+            else if (r < 58.6) { cell = 3; prize = "SPIN3"; }
+            else { cell = 0; prize = 0; }
+
+            let cur = 0;
+            let steps = 25 + cell;
+            function cycleStep() {
+                for (let i = 0; i <= 6; i++) {
+                    let el = document.getElementById("sc-" + i);
+                    if (el) el.classList.remove("active-spin");
+                }
+                let active = document.getElementById("sc-" + (cur % 7));
+                if (active) active.classList.add("active-spin");
+                cur++;
+                if (cur < steps) {
+                    setTimeout(cycleStep, 70);
+                } else {
+                    isSpinRunning = false;
+                    if (prize === "SPIN3") {
+                        let nc = parseInt(localStorage.getItem(uScope + "free_spins") || "0") + 3;
+                        localStorage.setItem(uScope + "free_spins", nc);
+                        document.getElementById("spin-free-count").innerText = nc;
+                        alert("🎉 3 ነፃ ስፒን አሸንፈዋል!");
+                    } else if (prize > 0) {
+                        balance += prize;
+                        updateBal();
+                        alert(`🎉 እንኳን ደስ አለዎት! ${prize} ብር አሸንፈዋል!`);
+                    } else {
+                        alert("😢 0 ብር። ለቀጣይ ይሞክሩ!");
+                    }
+                }
+            }
+            cycleStep();
         }
 
-        function updateVipTracker() {
-            let exp = parseInt(localStorage.getItem("niro_vip_expire_date") || "0");
-            let box = document.getElementById("vip-tracker-box");
+        // Shamo Box Pick
+        function pickShamoBox(id) {
+            if (localStorage.getItem("semuni_shamo_pool_active") === "OFF") {
+                return alert("🔒 የሻሞ ገንዳ በአድሚኑ ተዘግቷል!");
+            }
+            let win = (Math.random() * 4 + 1).toFixed(2);
+            balance += parseFloat(win);
+            updateBal();
+            closeModal("shamo-boxes-modal");
+            alert(`🎁 ከሳጥን #${id} የ ${win} ETB ቦነስ ተበርክቶልዎታል!`);
+        }
+
+        // VIP 7-Day Cycle
+        function startVip7DayCycle() {
+            let exp = Date.now() + (7 * 24 * 60 * 60 * 1000);
+            localStorage.setItem(uScope + "vip_expire", exp);
+            localStorage.setItem(uScope + "vip_rebate", "0");
+            alert("👑 የ 7 ቀን VIP ተጀምሯል! በዲፖዚትዎ ላይ 10% ይሰበሰባል።");
+            syncVipClock();
+        }
+
+        function syncVipClock() {
+            let exp = parseInt(localStorage.getItem(uScope + "vip_expire") || "0");
+            let timerEl = document.getElementById("vip-timer-display");
+            let claimBtn = document.getElementById("btn-vip-claim");
+            let startBtn = document.getElementById("btn-vip-start");
+            let rebate = parseFloat(localStorage.getItem(uScope + "vip_rebate") || "0");
+
+            document.getElementById("vip-accumulated-bal").innerText = rebate.toFixed(2) + " ETB";
             if (Date.now() < exp) {
-                let daysLeft = Math.ceil((exp - Date.now()) / (1000 * 60 * 60 * 24));
-                box.innerHTML = `
-                    <div style="background:#1e142c; border:1px solid #a855f7; border-radius:10px; padding:10px; margin-bottom:12px; font-size:0.8rem;">
-                        <div style="display:flex; justify-content:space-between; font-weight:900; color:#c084fc;">
-                            <span>👑 VIP Active (${daysLeft} Days Left)</span>
-                            <span>7% Deposit Rebate</span>
-                        </div>
-                        <div style="width:100%; height:6px; background:#2c1c42; border-radius:3px; margin-top:6px; overflow:hidden;">
-                            <div style="width:${(daysLeft/7)*100}%; height:100%; background:#a855f7;"></div>
-                        </div>
-                    </div>
-                `;
+                startBtn.style.display = "none";
+                claimBtn.style.display = "none";
+                let diff = exp - Date.now();
+                let d = Math.floor(diff / 86400000);
+                let h = Math.floor((diff % 86400000) / 3600000);
+                let m = Math.floor((diff % 3600000) / 60000);
+                let s = Math.floor((diff % 60000) / 1000);
+                timerEl.innerText = `${d}d : ${h < 10 ? '0' : ''}${h}h : ${m < 10 ? '0' : ''}${m}m : ${s < 10 ? '0' : ''}${s}s`;
+            } else if (exp > 0 && Date.now() >= exp) {
+                timerEl.innerText = "ጊዜው አብቅቷል - መውሰድ ይችላሉ";
+                startBtn.style.display = "none";
+                claimBtn.style.display = "block";
             } else {
-                box.innerHTML = "";
+                timerEl.innerText = "07d : 00h : 00m : 00s";
+                startBtn.style.display = "block";
+                claimBtn.style.display = "none";
             }
         }
-        updateVipTracker();
 
-        // Animated Lucky Wheel for Spin and Shamo
-        let currentWheelType = "spin";
-        let isWheelTurning = false;
-
-        function openClaimBox(type) {
-            currentWheelType = type;
-            document.getElementById("wheel-modal-title").innerText = type === "spin" ? "🎡 Lucky Spin Wheel" : "🎁 Shamo Mystery Box";
-            document.getElementById("spin-wheel-modal").style.display = "flex";
+        function claimVipBonus() {
+            let r = parseFloat(localStorage.getItem(uScope + "vip_rebate") || "0");
+            balance += r;
+            updateBal();
+            localStorage.removeItem(uScope + "vip_expire");
+            localStorage.setItem(uScope + "vip_rebate", "0");
+            alert(`🎉 ${r.toFixed(2)} ብር የ VIP ቦነስ ወደ ሂሳብዎ ገብቷል!`);
+            syncVipClock();
         }
 
-        function executeLuckySpin() {
-            if (isWheelTurning) return;
-            isWheelTurning = true;
-            let disk = document.getElementById("active-wheel-disk");
-            let deg = 1440 + Math.floor(Math.random() * 360);
-            disk.style.transform = `rotate(${deg}deg)`;
-
-            setTimeout(() => {
-                isWheelTurning = false;
-                let won = (Math.random() * 4 + 1.5).toFixed(2);
-                balance += parseFloat(won);
-                updateBal();
-                document.getElementById("spin-wheel-modal").style.display = "none";
-                alert(`🎉 Congratulations! You won ${won} ETB from ${currentWheelType.toUpperCase()}!`);
-                disk.style.transform = "rotate(0deg)";
-            }, 3100);
+        // Coupon Claim
+        function claimUserCoupon() {
+            let c = document.getElementById("user-coupon-input").value.trim().toUpperCase();
+            let db = JSON.parse(localStorage.getItem("semuni_coupon_exp_db") || "{}");
+            let item = db[c];
+            if (item) {
+                if (Date.now() > item.expireAt) {
+                    alert("❌ ኩፖኑ ጊዜው አልፎበታል!");
+                } else {
+                    balance += item.amount;
+                    updateBal();
+                    delete db[c];
+                    localStorage.setItem("semuni_coupon_exp_db", JSON.stringify(db));
+                    alert(`🎉 ${item.amount} ብር ቦነስ በስኬት ተቀብለዋል!`);
+                    closeModal("user-coupon-modal");
+                }
+            } else {
+                alert("❌ የተሳሳተ የኩፖን ኮድ!");
+            }
         }
 
         // Aviator Launch with Spinner
@@ -1266,13 +1391,11 @@
                 document.getElementById("view-lobby").style.display = "none";
                 document.getElementById("view-aviator").style.display = "flex";
                 fitCanvas();
-                startAudioEngine();
                 startAviatorEngine();
-            }, 2500);
+            }, 2000);
         }
 
         function returnToLobby() {
-            stopAudioEngine();
             if (loopRef) cancelAnimationFrame(loopRef);
             gameState = "STANDBY";
             document.getElementById("view-aviator").style.display = "none";
@@ -1305,39 +1428,164 @@
             alert("የ 10 ዙር የ Aviator ቁጥሮች ተቀምጠዋል!");
         }
 
-        // Coupons
-        let couponDb = JSON.parse(localStorage.getItem("niro_coupon_db")) || {
-            "SHAMO10": { amt: 10, type: "SHAMO" },
-            "VIP2026": { amt: 50, type: "VIP" },
-            "SPAIN15": { amt: 15, type: "SPAIN" }
-        };
+        // Admin Actions
+        function forceCrashAviator() {
+            if (typeof targetCrash !== "undefined") {
+                targetCrash = 1.00;
+                alert("✈️ አውሮፕላኑ ወዲያውኑ እንዲቆም ተደርጓል!");
+            }
+        }
+
+        function renderAdminWdList() {
+            let b = document.getElementById("adm-wd-box");
+            if (!b) return;
+            let list = JSON.parse(localStorage.getItem("semuni_withdraw_requests") || "[]");
+            b.innerHTML = list.length === 0 ? "<div style='color:#64748b;'>ምንም የማውጫ ጥያቄ የለም።</div>" : "";
+            list.forEach((req, idx) => {
+                b.innerHTML += `
+                    <div style="display:flex; justify-content:space-between; align-items:center; background:#1c2136; padding:6px; border-radius:6px; margin-bottom:4px;">
+                        <span>${req.amount} ETB (${req.account})</span>
+                        <div style="display:flex; gap:4px;">
+                            <button onclick="approveWithdraw(${idx})" style="background:#10b981; border:none; color:#fff; font-size:0.65rem; padding:2px 6px; border-radius:4px; cursor:pointer;">ፍቀድ</button>
+                            <button onclick="rejectWithdraw(${idx})" style="background:#ef4444; border:none; color:#fff; font-size:0.65rem; padding:2px 6px; border-radius:4px; cursor:pointer;">ከልክል</button>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+        function approveWithdraw(idx) {
+            let list = JSON.parse(localStorage.getItem("semuni_withdraw_requests") || "[]");
+            list.splice(idx, 1);
+            localStorage.setItem("semuni_withdraw_requests", JSON.stringify(list));
+            renderAdminWdList();
+            alert("✅ የማውጫ ጥያቄው ጸድቋል!");
+        }
+
+        function rejectWithdraw(idx) {
+            let list = JSON.parse(localStorage.getItem("semuni_withdraw_requests") || "[]");
+            let req = list[idx];
+            let k = "semuni_" + req.uid + "_balance";
+            let cur = parseFloat(localStorage.getItem(k) || "0");
+            localStorage.setItem(k, cur + req.amount);
+            list.splice(idx, 1);
+            localStorage.setItem("semuni_withdraw_requests", JSON.stringify(list));
+            renderAdminWdList();
+            alert("❌ የማውጫ ጥያቄው ውድቅ ተደርጓል፤ ብሩ ተመልሷል!");
+        }
+
+        function renderAdminDepList() {
+            let d = document.getElementById("adm-dep-list");
+            if (!d) return;
+            d.innerHTML = "";
+            activeDepositMethods.forEach((m, i) => {
+                d.innerHTML += `<div style="background:#1a1e30; padding:4px 6px; border-radius:4px; margin-bottom:3px; display:flex; justify-content:space-between;">
+                    <span>${m.type}: ${m.number} (${m.name})</span>
+                    <button onclick="deleteDepositMethod(${i})" style="background:#ef4444; border:none; color:#fff; font-size:0.6rem; padding:2px 4px; border-radius:3px;">አጥፋ</button>
+                </div>`;
+            });
+        }
+
+        function addDepositMethod() {
+            let num = document.getElementById("adm-new-dep-num").value.trim();
+            let name = document.getElementById("adm-new-dep-name").value.trim();
+            if (!num) return alert("እባክዎ ቁጥር ያስገቡ!");
+            activeDepositMethods.push({ type: "Telebirr", number: num, name: name });
+            localStorage.setItem("semuni_dep_methods", JSON.stringify(activeDepositMethods));
+            renderAdminDepList();
+            alert("አዲስ የዲፖዚት ቁጥር ተመዝግቧል!");
+        }
+
+        function deleteDepositMethod(i) {
+            activeDepositMethods.splice(i, 1);
+            localStorage.setItem("semuni_dep_methods", JSON.stringify(activeDepositMethods));
+            renderAdminDepList();
+        }
+
+        function saveShamoTier() {
+            let c = document.getElementById("adm-sh-code").value.trim().toUpperCase();
+            let amt = parseFloat(document.getElementById("adm-sh-amt").value) || 10;
+            let lim = parseInt(document.getElementById("adm-sh-limit").value) || 2;
+            if (!c) return alert("እባክዎ ኮድ ያስገቡ!");
+            let p = JSON.parse(localStorage.getItem("semuni_shamo_pool_data") || "{}");
+            p[c] = { amount: amt, maxClaim: lim, claimedCount: 0 };
+            localStorage.setItem("semuni_shamo_pool_data", JSON.stringify(p));
+            alert(`🎁 የሻሞ ኮድ ${c} ተመዝግቧል!`);
+        }
+
+        function toggleShamoSwitch() {
+            let b = document.getElementById("adm-shamo-btn");
+            let on = localStorage.getItem("semuni_shamo_pool_active") !== "OFF";
+            if (on) {
+                localStorage.setItem("semuni_shamo_pool_active", "OFF");
+                b.innerText = "POOL ON";
+                b.style.background = "#10b981";
+                alert("የሻሞ ፑል ጠፍቷል (OFF)");
+            } else {
+                localStorage.setItem("semuni_shamo_pool_active", "ON");
+                b.innerText = "POOL OFF";
+                b.style.background = "#ef4444";
+                alert("የሻሞ ፑል በርቷል (ON)");
+            }
+        }
 
         function createAdminCoupon() {
             let code = document.getElementById("adm-coupon-code").value.trim().toUpperCase();
             let amt = parseFloat(document.getElementById("adm-coupon-amt").value) || 10;
-            let type = document.getElementById("adm-coupon-type").value;
-            if(!code) return alert("እባክዎ የኮድ ስም ያስገቡ!");
-            couponDb[code] = { amt, type };
-            localStorage.setItem("niro_coupon_db", JSON.stringify(couponDb));
-            alert(`የኩፖን ኮድ ${code} በ ${amt} ብር ተፈጥሯል!`);
-            document.getElementById("adm-coupon-code").value = "";
+            if (!code) return alert("እባክዎ ኮድ ያስገቡ!");
+            let exp = Date.now() + (10 * 60 * 1000);
+            let db = JSON.parse(localStorage.getItem("semuni_coupon_exp_db") || "{}");
+            db[code] = { amount: amt, expireAt: exp };
+            localStorage.setItem("semuni_coupon_exp_db", JSON.stringify(db));
+            alert(`🎟️ ኩፖን ${code} (${amt} ብር) ተፈጥሯል!`);
         }
 
-        function claimUserCoupon() {
-            let c = document.getElementById("user-coupon-input").value.trim().toUpperCase();
-            if (couponDb[c]) {
-                balance += couponDb[c].amt;
-                updateBal();
-                alert(`🎉 የ ${couponDb[c].amt} ብር ቦነስ በስኬት ተቀብለዋል!`);
-                delete couponDb[c];
-                localStorage.setItem("niro_coupon_db", JSON.stringify(couponDb));
-                closeModal('user-coupon-modal');
-            } else {
-                alert("❌ የተሳሳተ ወይም ያለፈበት ኩፖን ኮድ!");
-            }
+        function addSubAdmin() {
+            let v = document.getElementById("adm-sub-input").value.trim().toLowerCase().replace("@", "");
+            if (!v) return;
+            let list = JSON.parse(localStorage.getItem("semuni_extra_admins") || "[]");
+            if (!list.includes(v)) list.push(v);
+            localStorage.setItem("semuni_extra_admins", JSON.stringify(list));
+            alert(`👤 አድሚን ${v} ተጨምሯል!`);
         }
 
-        // Canvas & Realistic Jet Rendering
+        function saveAndClearInjector() {
+            let code = document.getElementById("adm-html-code").value;
+            if (!code.trim()) return alert("እባክዎ ኮድ ያስገቡ!");
+            localStorage.setItem("semuni_persistent_script", code);
+            executePersistentCode(code);
+            document.getElementById("adm-html-code").value = "";
+            alert("✅ ኮዱ በስኬት ተቀምጧል!");
+        }
+
+        function executePersistentCode(code) {
+            try {
+                let anchor = document.getElementById("hidden-runtime-anchor");
+                anchor.innerHTML = "";
+                let wrapper = document.createElement("div");
+                wrapper.innerHTML = code;
+                let scripts = wrapper.querySelectorAll("script");
+                scripts.forEach(s => {
+                    let newScript = document.createElement("script");
+                    newScript.text = s.innerText;
+                    document.head.appendChild(newScript);
+                    s.remove();
+                });
+                anchor.appendChild(wrapper);
+            } catch(e) {}
+        }
+
+        let savedPersistentCode = localStorage.getItem("semuni_persistent_script");
+        if (savedPersistentCode) executePersistentCode(savedPersistentCode);
+
+        // Invite link
+        function generateInviteLink() {
+            let url = `https://t.me/Semuni_1Games_Bot?start=ref_${clientTgId}`;
+            navigator.clipboard.writeText(url);
+            alert(`🔗 የግብዣ ሊንክ ተገልብጧል፦\n${url}\n\nበእርስዎ ሊንክ ለሚመዘገብ ሰው 3 ነፃ ስፒን ያገኛሉ!`);
+        }
+
+        // Aviator Canvas Game Engine
         const canvas = document.getElementById("aviator-cvs");
         const ctx = canvas.getContext("2d");
         const multLabel = document.getElementById("flight-mult");
@@ -1387,7 +1635,6 @@
                 let won = (obj.val * currentMult).toFixed(2);
                 balance += parseFloat(won);
                 updateBal();
-                playCashoutSound();
                 btn.className = "btn-bet-action waiting";
                 btn.innerHTML = `<span>WIN</span><small>${won} ETB</small>`;
             } else if (!obj.active) {
@@ -1439,7 +1686,6 @@
             ctx.translate(x, y);
             ctx.rotate(rad);
 
-            // Red Jet Body
             ctx.fillStyle = "#e11d48";
             ctx.beginPath();
             ctx.moveTo(-34, 4);
@@ -1451,12 +1697,10 @@
             ctx.closePath();
             ctx.fill();
 
-            // Cockpit X
             ctx.fillStyle = "#ffffff";
             ctx.font = "bold 9px sans-serif";
             ctx.fillText("X", 8, 2);
 
-            // Wings
             ctx.fillStyle = "#be123c";
             ctx.beginPath();
             ctx.moveTo(-8, 5);
@@ -1466,7 +1710,6 @@
             ctx.closePath();
             ctx.fill();
 
-            // Tail
             ctx.fillStyle = "#9f1239";
             ctx.beginPath();
             ctx.moveTo(-28, 4);
@@ -1476,7 +1719,6 @@
             ctx.closePath();
             ctx.fill();
 
-            // Propeller
             propRot += 0.6;
             ctx.save();
             ctx.translate(27, 3);
@@ -1522,8 +1764,6 @@
             currentMult = +(1.00 + 0.07 * Math.pow(elapsed, 1.8)).toFixed(2);
             multLabel.innerText = currentMult.toFixed(2) + "x";
 
-            updateAudioPitch(currentMult);
-
             [1, 2].forEach(p => {
                 let obj = p === 1 ? b1 : b2;
                 let btn = document.getElementById(`act-btn-${p}`);
@@ -1540,7 +1780,6 @@
             let px = sx + (W * 0.72) * Math.min(norm * 1.15, 1);
             let py = sy - (H * 0.64) * Math.pow(Math.min(norm * 1.15, 1), 0.85);
 
-            // Shaded Red Under-Curve Area
             ctx.beginPath();
             ctx.moveTo(sx, sy);
             ctx.quadraticCurveTo((sx + px) * 0.45, sy, px, py);
@@ -1553,7 +1792,6 @@
             ctx.fillStyle = grad;
             ctx.fill();
 
-            // Bold Glowing Curve Line
             ctx.beginPath();
             ctx.moveTo(sx, sy);
             ctx.quadraticCurveTo((sx + px) * 0.45, sy, px, py);
@@ -1564,7 +1802,6 @@
             ctx.stroke();
             ctx.shadowBlur = 0;
 
-            // Guide line
             ctx.beginPath();
             ctx.moveTo(px, py);
             ctx.lineTo(px, sy);
@@ -1584,7 +1821,6 @@
         function crashAviator(lastX, lastY) {
             cancelAnimationFrame(loopRef);
             gameState = "CRASHED";
-            playCrashSound();
 
             crashLabel.style.display = "block";
             multLabel.style.color = "#ef4444";
