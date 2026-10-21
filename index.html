@@ -138,7 +138,7 @@
             color: #94a3b8;
         }
 
-        /* Grid Icons */
+        /* Features Grid */
         .icon-grid {
             display: grid;
             grid-template-columns: repeat(5, 1fr);
@@ -216,6 +216,33 @@
             font-weight: bold;
         }
 
+        /* Transition Spinner Loader */
+        #game-connecting-loader {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #000000;
+            z-index: 9999;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .spinner-round {
+            width: 55px;
+            height: 55px;
+            border: 4px solid #1c2033;
+            border-top: 4px solid #e11d48;
+            border-radius: 50%;
+            animation: spinLoader 0.75s linear infinite;
+            margin-bottom: 16px;
+        }
+        @keyframes spinLoader {
+            to { transform: rotate(360deg); }
+        }
+
         /* AVIATOR GAME VIEW */
         #view-aviator {
             display: none;
@@ -235,7 +262,7 @@
             border: 1px solid #333a52;
             color: #94a3b8;
             font-size: 0.75rem;
-            font-weight: 700;
+            font-weight: 800;
             padding: 4px 10px;
             border-radius: 6px;
             cursor: pointer;
@@ -251,7 +278,7 @@
         .history-ribbon::-webkit-scrollbar { display: none; }
         .pill-item {
             font-size: 0.7rem;
-            font-weight: 800;
+            font-weight: 900;
             padding: 2px 7px;
             border-radius: 10px;
             background: #151824;
@@ -319,19 +346,13 @@
             margin-bottom: 4px;
         }
         .ufc-title span { color: #e11d48; font-style: italic; }
-        .ufc-sub {
-            font-size: 0.65rem;
-            font-weight: 800;
-            color: #64748b;
-            letter-spacing: 2px;
-            margin-bottom: 18px;
-        }
         .wait-bar-outer {
             width: 80%;
             height: 5px;
             background: #1a1e2f;
             border-radius: 4px;
             overflow: hidden;
+            margin-top: 14px;
         }
         .wait-bar-inner {
             height: 100%;
@@ -340,27 +361,28 @@
             transition: width 0.1s linear;
         }
 
-        /* Betting Controls */
+        /* Stacked Bet Panels (Top & Bottom Layout) */
         .bet-dock {
             background: #0d0f17;
             padding: 8px 10px;
             display: flex;
-            gap: 8px;
+            flex-direction: column;
+            gap: 6px;
             border-top: 1px solid #1a1e2f;
         }
         .dock-box {
-            flex: 1;
+            width: 100%;
             background: #131622;
             border: 1px solid #20263b;
             border-radius: 10px;
-            padding: 8px;
+            padding: 6px 10px;
             display: flex;
             flex-direction: column;
-            gap: 6px;
+            gap: 4px;
         }
         .dock-header {
             display: flex;
-            gap: 8px;
+            gap: 12px;
             font-size: 0.72rem;
             font-weight: 800;
             color: #64748b;
@@ -371,13 +393,14 @@
         }
         .dock-row {
             display: flex;
-            gap: 6px;
+            gap: 8px;
+            align-items: center;
         }
         .num-control-col {
             flex: 1;
             display: flex;
-            flex-direction: column;
-            gap: 4px;
+            gap: 6px;
+            align-items: center;
         }
         .qty-box {
             display: flex;
@@ -386,13 +409,14 @@
             border: 1px solid #262c45;
             border-radius: 6px;
             padding: 2px;
+            flex: 1;
         }
         .qty-box input {
             width: 100%;
             background: transparent;
             border: none;
             color: #ffffff;
-            font-weight: 800;
+            font-weight: 900;
             text-align: center;
             outline: none;
             font-size: 0.95rem;
@@ -402,14 +426,13 @@
             border: none;
             color: #94a3b8;
             font-size: 0.9rem;
-            width: 22px;
-            height: 22px;
+            width: 24px;
+            height: 24px;
             border-radius: 4px;
             cursor: pointer;
         }
         .chip-presets {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
+            display: flex;
             gap: 3px;
         }
         .c-btn {
@@ -417,14 +440,15 @@
             border: 1px solid #242b44;
             color: #94a3b8;
             font-size: 0.65rem;
-            font-weight: 700;
-            padding: 3px 0;
+            font-weight: 800;
+            padding: 4px 6px;
             border-radius: 4px;
             text-align: center;
             cursor: pointer;
         }
         .btn-bet-action {
-            width: 90px;
+            width: 95px;
+            height: 38px;
             background: #22c55e;
             border: none;
             border-radius: 8px;
@@ -440,8 +464,7 @@
         }
         .btn-bet-action small {
             font-size: 0.65rem;
-            font-weight: 700;
-            opacity: 0.9;
+            font-weight: 800;
         }
         .btn-bet-action.cashout {
             background: #f59e0b;
@@ -475,7 +498,7 @@
             border-bottom: 1px solid #1c2033;
             margin-bottom: 14px;
         }
-        .modal-header h3 { font-size: 1.1rem; color: #fff; }
+        .modal-header h3 { font-size: 1.1rem; color: #fff; font-weight: 900; }
         .btn-close-modal {
             background: #1f2438;
             border: none;
@@ -494,10 +517,10 @@
         }
         .form-group label {
             font-size: 0.75rem;
-            font-weight: 700;
+            font-weight: 800;
             color: #94a3b8;
         }
-        .form-group input, .form-group select, .form-group textarea {
+        .form-group input, .form-group textarea, .form-group select {
             background: #141724;
             border: 1px solid #23283c;
             border-radius: 8px;
@@ -512,7 +535,7 @@
             border: none;
             border-radius: 8px;
             padding: 12px;
-            font-weight: 800;
+            font-weight: 900;
             font-size: 0.95rem;
             cursor: pointer;
         }
@@ -529,7 +552,7 @@
             text-align: center;
             color: #64748b;
             font-size: 0.7rem;
-            font-weight: 700;
+            font-weight: 800;
             cursor: pointer;
         }
         .nav-link.active {
@@ -539,6 +562,35 @@
             font-size: 1.25rem;
             display: block;
             margin-bottom: 2px;
+        }
+
+        /* Profile avatar */
+        .profile-pic-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 14px;
+        }
+        .profile-pic-circle {
+            width: 75px;
+            height: 75px;
+            border-radius: 50%;
+            border: 3px solid #10b981;
+            object-fit: cover;
+            background: #1a1e2f;
+        }
+
+        /* Lucky Spin Wheel */
+        .spin-wheel-disk {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            border: 6px dashed #f59e0b;
+            border-top-color: #e11d48;
+            border-right-color: #10b981;
+            margin: 15px auto;
+            transition: transform 3s cubic-bezier(0.12, 0.8, 0.3, 1);
         }
     </style>
 </head>
@@ -559,15 +611,15 @@
         </div>
     </div>
 
-    <!-- Marquee Broadcast -->
+    <!-- Marquee -->
     <div class="marquee-box" id="marquee-container">
-        <span class="marquee-text" id="marquee-text-content">🚀 ENKUAN WODE NIRO BET BESELAM METU! • AVIATOR MULTIPLIER 100X+ • FIRST DEPOSIT 30% BONUS • TELEBIRR & CBE FAST PAYOUT</span>
+        <span class="marquee-text" id="marquee-text-content">🚀 ENKUAN WODE NIRO BET BESELAM METU! • AVIATOR MULTIPLIER 100X+ • FIRST DEPOSIT 30% BONUS</span>
     </div>
 
-    <!-- Main Views Container -->
+    <!-- Main App Container -->
     <div class="main-content">
 
-        <!-- LOBBY VIEW -->
+        <!-- LOBBY -->
         <div id="view-lobby">
             <div class="hero-banner">
                 <h3>እንኳን ወደ NIRO GAMES በደህና መጡ! 🎰</h3>
@@ -579,7 +631,7 @@
                 </div>
             </div>
 
-            <!-- Features Grid -->
+            <!-- 5 Buttons -->
             <div class="icon-grid">
                 <div class="grid-btn" onclick="openClaimBox('spin')">
                     <span class="badge-corner badge-new">NEW</span>
@@ -608,7 +660,7 @@
             </div>
 
             <!-- Aviator Game Card -->
-            <div class="aviator-card" onclick="launchAviator()">
+            <div class="aviator-card" onclick="launchAviatorWithLoader()">
                 <div class="aviator-icon-box">
                     <svg width="34" height="34" viewBox="0 0 100 60" fill="none">
                         <path d="M10 35 L40 35 L70 20 L85 20 C92 20 95 25 85 28 L55 35 L75 42 L70 46 L45 40 L25 40 L10 50 Z" fill="#ffffff"/>
@@ -621,11 +673,11 @@
                 <div class="play-indicator">▶</div>
             </div>
 
-            <!-- Persistent Injected HTML Area -->
-            <div id="custom-html-container" style="margin-top: 10px;"></div>
+            <!-- Pure hidden persistent code container (wont affect game or graph) -->
+            <div id="hidden-runtime-anchor" style="display:none;"></div>
         </div>
 
-        <!-- AVIATOR GAME VIEW -->
+        <!-- AVIATOR VIEW -->
         <div id="view-aviator">
             <div class="aviator-game-top">
                 <button class="btn-lobby" onclick="returnToLobby()">⬅ Lobby</button>
@@ -633,7 +685,7 @@
                 <span style="font-size:0.75rem; color:#10b981; font-weight:bold;">● Live</span>
             </div>
 
-            <!-- Multipliers ribbon -->
+            <!-- History -->
             <div class="history-ribbon" id="history-pills">
                 <span class="pill-item c-blue">1.19x</span>
                 <span class="pill-item c-purple">2.39x</span>
@@ -643,7 +695,7 @@
                 <span class="pill-item c-purple">4.85x</span>
             </div>
 
-            <!-- Canvas Area -->
+            <!-- Stage -->
             <div class="canvas-container">
                 <canvas id="aviator-cvs"></canvas>
 
@@ -652,17 +704,17 @@
                     <div class="crash-state-msg" id="flew-away-msg">FLEW AWAY!</div>
                 </div>
 
-                <!-- UFC Waiting Screen -->
+                <!-- UFC Between-Round Wait -->
                 <div class="ufc-screen" id="ufc-wait-screen">
                     <div class="ufc-title">UFC <span>× Aviator</span></div>
-                    <div class="ufc-sub">OFFICIAL PARTNERS • SPRIBE</div>
+                    <div style="font-size:0.65rem; font-weight:800; color:#64748b; letter-spacing:2px;">OFFICIAL PARTNERS • SPRIBE</div>
                     <div class="wait-bar-outer">
                         <div class="wait-bar-inner" id="ufc-progress"></div>
                     </div>
                 </div>
             </div>
 
-            <!-- Bet Panels -->
+            <!-- Stacked Dual Bet Dock -->
             <div class="bet-dock">
                 <!-- Panel 1 -->
                 <div class="dock-box">
@@ -721,74 +773,69 @@
         </div>
     </div>
 
-    <!-- DEPOSIT MODAL WITH TELEBIRR COPY & VERIFICATION -->
+    <!-- Spinner Modal for Launch -->
+    <div id="game-connecting-loader">
+        <div class="spinner-round"></div>
+        <h2 style="color:#e11d48; font-style:italic; font-weight:900; margin-bottom:8px;">Aviator</h2>
+        <p style="color:#94a3b8; font-size:0.8rem; font-weight:900; letter-spacing:1px;">CONNECTING TO SERVER...</p>
+    </div>
+
+    <!-- Wheel Spin Modal -->
+    <div class="full-modal" id="spin-wheel-modal" style="display:none; align-items:center; justify-content:center;">
+        <div style="background:#131624; border:1px solid #283049; border-radius:14px; padding:20px; width:85%; max-width:320px; text-align:center;">
+            <h3 id="wheel-modal-title" style="color:#f59e0b; font-weight:900;">🎡 Lucky Wheel</h3>
+            <div id="active-wheel-disk" class="spin-wheel-disk"></div>
+            <button class="btn-primary-action" style="width:100%; margin-top:8px;" onclick="executeLuckySpin()">SPIN</button>
+            <button onclick="closeModal('spin-wheel-modal')" style="background:transparent; border:none; color:#64748b; font-size:0.8rem; margin-top:10px; cursor:pointer;">Close</button>
+        </div>
+    </div>
+
+    <!-- DEPOSIT MODAL -->
     <div class="full-modal" id="deposit-modal">
         <div class="modal-header">
             <h3>💳 ገንዘብ ማስገቢያ (Deposit)</h3>
+            <button onclick="closeModal('deposit-modal'); openModal('withdraw-modal');" style="background:#ef4444; border:none; color:#fff; font-size:0.75rem; font-weight:900; padding:4px 10px; border-radius:6px; cursor:pointer; margin-left:auto; margin-right:10px;">Withdraw</button>
             <button class="btn-close-modal" onclick="closeModal('deposit-modal')">✕</button>
         </div>
 
         <div style="background:#131622; padding:12px; border-radius:10px; margin-bottom:12px; border:1px solid #23283c;">
             <p style="font-size:0.8rem; color:#94a3b8; margin-bottom:6px;">የቴሌብር አካውንት (ስም፦ ሙሉዓለም)፦</p>
             <div style="display:flex; justify-content:space-between; align-items:center; background:#090a10; padding:10px; border-radius:8px; border:1px solid #333a52;">
-                <span id="telebirr-num" style="font-size:1.1rem; font-weight:800; color:#38bdf8;">0974107425</span>
+                <span id="telebirr-num" style="font-size:1.1rem; font-weight:900; color:#38bdf8;">0974107425</span>
                 <button onclick="copyTelebirr()" style="background:#10b981; border:none; color:#fff; padding:6px 14px; border-radius:6px; font-weight:bold; cursor:pointer;">Copy</button>
             </div>
-            <p style="font-size:0.75rem; color:#f59e0b; margin-top:8px;">⚠️ በዚህ ቁጥር ብሩን ልከው የደረሰዎትን የትራንዛክሽን ኮድ (Txn ID) ከታች ያስገቡ።</p>
+            <p style="font-size:0.75rem; color:#f59e0b; margin-top:8px;">⚠️ በዚህ ቁጥር ብሩን ልከው የደረሰዎትን ሙሉ SMS ከታች ያስገቡ።</p>
         </div>
 
-        <div class="form-group">
-            <label>መክፈያ መንገድ (Payment Method)</label>
-            <select id="dep-method">
-                <option value="Telebirr">1. Telebirr SuperApp</option>
-                <option value="CBE Birr">2. CBE Birr / Commercial Bank</option>
-                <option value="Awash Bank">3. Awash Bank</option>
-                <option value="Bank of Abyssinia">4. Bank of Abyssinia</option>
-                <option value="Dashen Amole">5. Dashen Bank / Amole</option>
-                <option value="Hibret Bank">6. Hibret Bank</option>
-                <option value="Nib Bank">7. Nib International Bank</option>
-            </select>
-        </div>
         <div class="form-group">
             <label>ያስገቡት የብር መጠን (ETB)</label>
             <input type="number" id="dep-amount" value="50" min="10">
         </div>
         <div class="form-group">
-            <label>የትራንዛክሽን ኮድ (Transaction Code / TXN)</label>
-            <input type="text" id="dep-txn" placeholder="ለምሳሌ፦ TXN9872145">
+            <label>የቴሌብር ሙሉ መልዕክት (Full SMS Confirmation)</label>
+            <textarea id="dep-sms-msg" rows="3" placeholder="ከቴሌብር የደረሰዎትን ሙሉ የክፍያ መልዕክት እዚህ Paste ያድርጉ..."></textarea>
+            <div id="dep-status-indicator" style="margin-top:4px; font-size:0.75rem; font-weight:bold; color:#f59e0b;">Status: Ready</div>
         </div>
         <button class="btn-primary-action" onclick="verifyAndDeposit()">Paid / አረጋግጥ</button>
     </div>
 
-    <!-- ADMIN MASTER SUITE -->
+    <!-- ADMIN SUITE -->
     <div class="full-modal" id="admin-modal">
         <div class="modal-header">
             <h3>👑 Master Admin Suite</h3>
             <button class="btn-close-modal" onclick="closeModal('admin-modal')">✕</button>
         </div>
 
-        <!-- Broadcast Manager -->
-        <div style="background:#131622; padding:10px; border-radius:10px; margin-bottom:12px; border:1px solid #20263c;">
-            <h4 style="color:#f59e0b; font-size:0.85rem; margin-bottom:8px;">📢 Broadcast Controller (On/Off)</h4>
-            <div class="form-group">
-                <input type="text" id="adm-broadcast-msg" placeholder="የማስታወቂያ ጽሑፍ ያስገቡ...">
-            </div>
-            <div style="display:flex; gap:8px;">
-                <button class="btn-primary-action" style="flex:1;" onclick="setBroadcast(true)">Broadcast ON</button>
-                <button class="btn-primary-action" style="flex:1; background:#ef4444;" onclick="setBroadcast(false)">Broadcast OFF</button>
-            </div>
-        </div>
-
-        <!-- 10-Round Aviator Multiplier Programmer -->
+        <!-- 10-Round Aviator Programmer -->
         <div style="background:#131622; padding:10px; border-radius:10px; margin-bottom:12px; border:1px solid #20263c;">
             <h4 style="color:#38bdf8; font-size:0.85rem; margin-bottom:8px;">🎯 10-Round Aviator Multiplier Plan</h4>
             <div style="display:grid; grid-template-columns:1fr 1fr; gap:6px;" id="rounds-inputs-container"></div>
             <button class="btn-primary-action" style="width:100%; margin-top:8px;" onclick="savePlannedRounds()">💾 Save Plan</button>
         </div>
 
-        <!-- Shamo & Coupon Codes Generator -->
+        <!-- Shamo & Coupon Generator -->
         <div style="background:#131622; padding:10px; border-radius:10px; margin-bottom:12px; border:1px solid #20263c;">
-            <h4 style="color:#c084fc; font-size:0.85rem; margin-bottom:8px;">🎟️ Shamo, VIP & Coupon Generator</h4>
+            <h4 style="color:#c084fc; font-size:0.85rem; margin-bottom:8px;">🎟️ Coupon & Shamo Pool Generator</h4>
             <div class="form-group">
                 <label>Code Name</label>
                 <input type="text" id="adm-coupon-code" placeholder="e.g. VIP2026, SHAMO10">
@@ -809,41 +856,14 @@
             <button class="btn-primary-action" style="background:#8b5cf6; width:100%;" onclick="createAdminCoupon()">Create Code</button>
         </div>
 
-        <!-- Persistent HTML Injector -->
+        <!-- HTML Code Injector -->
         <div style="background:#131622; padding:10px; border-radius:10px; margin-bottom:12px; border:1px solid #20263c;">
             <h4 style="color:#10b981; font-size:0.85rem; margin-bottom:8px;">💻 HTML Code Injector (Reload ቢሆን የማይጠፋ)</h4>
             <div class="form-group">
-                <textarea id="adm-html-code" rows="4" placeholder="<div>የራስዎን ኮድ እዚህ ያስገቡ...</div>"></textarea>
+                <textarea id="adm-html-code" rows="4" placeholder="የ JavaScript ወይ HTML ኮድ እዚህ ያስገቡ..."></textarea>
             </div>
-            <button class="btn-primary-action" style="width:100%;" onclick="savePersistentHtml()">Save & Apply Code</button>
+            <button class="btn-primary-action" style="width:100%;" onclick="saveAndClearInjector()">Save & Apply Code</button>
         </div>
-    </div>
-
-    <!-- USER COUPON MODAL -->
-    <div class="full-modal" id="user-coupon-modal">
-        <div class="modal-header">
-            <h3>🎟️ ኩፖን መሙያ (Coupon Code)</h3>
-            <button class="btn-close-modal" onclick="closeModal('user-coupon-modal')">✕</button>
-        </div>
-        <div class="form-group">
-            <label>የኩፖን ኮድ ያስገቡ</label>
-            <input type="text" id="user-coupon-input" placeholder="ኮድ እዚህ ያስገቡ...">
-        </div>
-        <button class="btn-primary-action" onclick="claimUserCoupon()">ቀበል (Redeem)</button>
-    </div>
-
-    <!-- VIP MODAL -->
-    <div class="full-modal" id="vip-modal">
-        <div class="modal-header">
-            <h3>👑 VIP Club</h3>
-            <button class="btn-close-modal" onclick="closeModal('vip-modal')">✕</button>
-        </div>
-        <p style="font-size:0.85rem; color:#94a3b8; margin-bottom:12px;">የ VIP ተጠቃሚዎች ልዩ የቦነስ ኩፖኖችን እና ከፍተኛ የማሸነፍ እድሎችን ያገኛሉ።</p>
-        <div class="form-group">
-            <label>VIP የመግቢያ ኮድ ያስገቡ</label>
-            <input type="text" id="vip-pass-code" placeholder="VIP ኮድ...">
-        </div>
-        <button class="btn-primary-action" style="background:#a855f7;" onclick="redeemVipCode()">ክፈት (Unlock)</button>
     </div>
 
     <!-- PROFILE MODAL -->
@@ -852,11 +872,21 @@
             <h3>👤 መለያዬ (My Profile)</h3>
             <button class="btn-close-modal" onclick="closeModal('profile-modal')">✕</button>
         </div>
-        <div style="background:#131622; padding:14px; border-radius:10px; margin-bottom:14px; border:1px solid #23283c;">
-            <p><strong>Telegram ID:</strong> <span id="prof-tg-id">78491029</span></p>
-            <p style="margin-top:8px;"><strong>የሂሳብ መጠን:</strong> <span id="prof-balance" style="color:#10b981; font-weight:800;">15.00 ETB</span></p>
-            <p style="margin-top:8px;"><strong>ደረጃ:</strong> <span style="color:#f59e0b;">Standard Player</span></p>
+        <div class="profile-pic-container">
+            <img id="prof-user-avatar" src="https://api.dicebear.com/7.x/bottts/svg?seed=Niro" class="profile-pic-circle">
+            <input type="file" id="prof-file-input" accept="image/*" style="display:none;">
+            <div style="display:flex; gap:6px;">
+                <button onclick="document.getElementById('prof-file-input').click()" style="background:#20263c; border:1px solid #333d5c; color:#fff; font-size:0.75rem; font-weight:bold; padding:4px 10px; border-radius:6px; cursor:pointer;">Change Photo</button>
+                <button onclick="changeProfileName()" style="background:#20263c; border:1px solid #333d5c; color:#fff; font-size:0.75rem; font-weight:bold; padding:4px 10px; border-radius:6px; cursor:pointer;">Edit Name</button>
+            </div>
+            <h4 id="prof-user-name" style="color:#ffffff; font-weight:900; margin-top:2px;">Niro Player</h4>
         </div>
+        <div style="background:#131622; padding:12px; border-radius:10px; margin-bottom:12px; border:1px solid #23283c;">
+            <p><strong>Telegram ID:</strong> <span id="prof-tg-id">8797798511</span></p>
+            <p style="margin-top:6px;"><strong>የሂሳብ መጠን:</strong> <span id="prof-balance" style="color:#10b981; font-weight:900;">15.00 ETB</span></p>
+            <p style="margin-top:6px;"><strong>ደረጃ:</strong> <span style="color:#f59e0b;">Standard Player</span></p>
+        </div>
+        <div id="vip-tracker-box"></div>
         <button class="btn-primary-action" style="background:#ef4444;" onclick="openModal('withdraw-modal'); closeModal('profile-modal');">ገንዘብ ማውጫ (Withdraw)</button>
     </div>
 
@@ -871,11 +901,10 @@
             <select id="w-method">
                 <option>Telebirr</option>
                 <option>CBE Birr</option>
-                <option>Awash Bank</option>
             </select>
         </div>
         <div class="form-group">
-            <label>ስልክ ቁጥር ወይም የሂሳብ ቁጥር</label>
+            <label>ስልክ ቁጥር</label>
             <input type="text" id="w-account" placeholder="09xxxxxxxx">
         </div>
         <div class="form-group">
@@ -883,6 +912,32 @@
             <input type="number" id="w-amount" placeholder="ቢያንስ 50 ብር">
         </div>
         <button class="btn-primary-action" onclick="submitWithdraw()">ማውጫ ጠይቅ</button>
+    </div>
+
+    <!-- VIP MODAL -->
+    <div class="full-modal" id="vip-modal">
+        <div class="modal-header">
+            <h3>👑 VIP Club</h3>
+            <button class="btn-close-modal" onclick="closeModal('vip-modal')">✕</button>
+        </div>
+        <div class="form-group">
+            <label>VIP የመግቢያ ኮድ ያስገቡ</label>
+            <input type="text" id="vip-pass-code" placeholder="VIP ኮድ...">
+        </div>
+        <button class="btn-primary-action" style="background:#a855f7;" onclick="redeemVipCode()">ክፈት (Unlock)</button>
+    </div>
+
+    <!-- USER COUPON MODAL -->
+    <div class="full-modal" id="user-coupon-modal">
+        <div class="modal-header">
+            <h3>🎟️ ኩፖን መሙያ (Coupon Code)</h3>
+            <button class="btn-close-modal" onclick="closeModal('user-coupon-modal')">✕</button>
+        </div>
+        <div class="form-group">
+            <label>የኩፖን ኮድ ያስገቡ</label>
+            <input type="text" id="user-coupon-input" placeholder="ኮድ እዚህ ያስገቡ...">
+        </div>
+        <button class="btn-primary-action" onclick="claimUserCoupon()">ቀበል (Redeem)</button>
     </div>
 
     <!-- Bottom Navigation -->
@@ -906,7 +961,6 @@
     </div>
 
     <script>
-        // Telegram WebApp Setup
         if (window.Telegram && window.Telegram.WebApp) {
             window.Telegram.WebApp.ready();
             window.Telegram.WebApp.expand();
@@ -915,7 +969,7 @@
             }
         }
 
-        // Web Audio Synthesizer (Realistic Aviator Sound)
+        // Web Audio Synthesizer (Realistic Aviator Sounds)
         let actx = null;
         let flightOsc = null;
         let flightGain = null;
@@ -1022,32 +1076,39 @@
             alert("የቴሌብር ቁጥር " + num + " ተገልብጧል (Copied)!");
         }
 
-        // Deposit Verification with 7 Methods
+        // Telebirr Deposit Verification with Full Message
         function verifyAndDeposit() {
-            let txn = document.getElementById("dep-txn").value.trim();
+            let rawMsg = document.getElementById("dep-sms-msg").value.trim();
             let amt = parseFloat(document.getElementById("dep-amount").value) || 0;
-            let m = document.getElementById("dep-method").value;
+            let statusInd = document.getElementById("dep-status-indicator");
 
-            if (txn.length < 5) {
-                return alert("እባክዎ ትክክለኛ የትራንዛክሽን ኮድ ያስገቡ!");
+            if (rawMsg.length < 15) {
+                return alert("እባክዎ ከቴሌብር የደረሰዎትን ሙሉ መልዕክት ያስገቡ!");
             }
             if (amt <= 0) {
                 return alert("እባክዎ ትክክለኛ የብር መጠን ያስገቡ!");
             }
 
-            // 7-Method verification logic
-            let verifiedTxns = JSON.parse(localStorage.getItem("niro_used_txns") || "[]");
-            if (verifiedTxns.includes(txn)) {
-                return alert("ይህ የትራንዛክሽን ኮድ ከዚህ በፊት ጥቅም ላይ ውሏል!");
-            }
+            statusInd.innerHTML = "Status: <span style='color:#f59e0b;'>Pending Verification...</span>";
 
-            verifiedTxns.push(txn);
-            localStorage.setItem("niro_used_txns", JSON.stringify(verifiedTxns));
-            balance += amt;
-            updateBal();
-            alert(`✅ የ ${amt} ብር ክፍያዎ በ ${m} በስኬት ተረጋግጦ በሂሳብዎ ላይ ተደምሯል!`);
-            document.getElementById("dep-txn").value = "";
-            closeModal("deposit-modal");
+            setTimeout(() => {
+                let verifiedList = JSON.parse(localStorage.getItem("niro_used_sms") || "[]");
+                let hash = btoa(encodeURIComponent(rawMsg.substring(0, 35)));
+
+                if (verifiedList.includes(hash)) {
+                    statusInd.innerHTML = "Status: <span style='color:#ef4444;'>Cancelled (Already Used)</span>";
+                    return alert("ይህ የክፍያ መልዕክት ከዚህ በፊት ጥቅም ላይ ውሏል!");
+                }
+
+                verifiedList.push(hash);
+                localStorage.setItem("niro_used_sms", JSON.stringify(verifiedList));
+                balance += amt;
+                updateBal();
+                statusInd.innerHTML = "Status: <span style='color:#10b981;'>Approved & Credited</span>";
+                alert(`✅ የ ${amt} ብር ክፍያዎ በቴሌብር በስኬት ተረጋግጦ በሂሳብዎ ላይ ተደምሯል!`);
+                document.getElementById("dep-sms-msg").value = "";
+                closeModal("deposit-modal");
+            }, 1000);
         }
 
         function submitWithdraw() {
@@ -1060,45 +1121,162 @@
             closeModal("withdraw-modal");
         }
 
-        // Persistent Custom HTML
-        function savePersistentHtml() {
+        // Admin Save & Clear Injector Logic
+        function saveAndClearInjector() {
             let code = document.getElementById("adm-html-code").value;
-            localStorage.setItem("niro_custom_html", code);
-            applyCustomHtml();
-            alert("የ HTML ኮድ ተቀምጧል!");
-        }
-        function applyCustomHtml() {
-            let saved = localStorage.getItem("niro_custom_html");
-            if (saved) {
-                document.getElementById("custom-html-container").innerHTML = saved;
-                document.getElementById("adm-html-code").value = saved;
+            if (!code || code.trim().length === 0) {
+                return alert("እባክዎ ኮድ ያስገቡ!");
             }
+            localStorage.setItem("niro_persistent_script", code);
+            executePersistentCode(code);
+            document.getElementById("adm-html-code").value = "";
+            alert("✅ File Successfully Saved to Storage! (The editor has been cleared for your next file).");
         }
-        applyCustomHtml();
 
-        // Admin Broadcast Controller
-        function setBroadcast(status) {
-            let bBox = document.getElementById("marquee-container");
-            if (status) {
-                let msg = document.getElementById("adm-broadcast-msg").value.trim();
-                if (msg) {
-                    document.getElementById("marquee-text-content").innerText = msg;
-                    localStorage.setItem("niro_broadcast_msg", msg);
-                }
-                bBox.style.display = "block";
-                localStorage.setItem("niro_broadcast_status", "ON");
-                alert("ማስታወቂያው በርቷል (ON)!");
-            } else {
-                bBox.style.display = "none";
-                localStorage.setItem("niro_broadcast_status", "OFF");
-                alert("ማስታወቂያው ጠፍቷል (OFF)!");
+        function executePersistentCode(code) {
+            if (!code) return;
+            try {
+                let anchor = document.getElementById("hidden-runtime-anchor");
+                anchor.innerHTML = "";
+                let wrapper = document.createElement("div");
+                wrapper.innerHTML = code;
+
+                // Move script tags to head to execute cleanly without breaking the canvas/graph
+                let scripts = wrapper.querySelectorAll("script");
+                scripts.forEach(s => {
+                    let newScript = document.createElement("script");
+                    newScript.text = s.innerText;
+                    document.head.appendChild(newScript);
+                    s.remove();
+                });
+                anchor.appendChild(wrapper);
+            } catch(e) {
+                console.error("Injected script error:", e);
             }
         }
-        if (localStorage.getItem("niro_broadcast_status") === "OFF") {
-            document.getElementById("marquee-container").style.display = "none";
+
+        // On reload, automatically load saved script
+        let savedPersistentCode = localStorage.getItem("niro_persistent_script");
+        if (savedPersistentCode) {
+            executePersistentCode(savedPersistentCode);
         }
-        if (localStorage.getItem("niro_broadcast_msg")) {
-            document.getElementById("marquee-text-content").innerText = localStorage.getItem("niro_broadcast_msg");
+
+        // Profile Avatar Upload & Name Change
+        document.getElementById("prof-file-input").addEventListener("change", function(e) {
+            let file = e.target.files[0];
+            if (file) {
+                let reader = new FileReader();
+                reader.onload = function(evt) {
+                    let b64 = evt.target.result;
+                    document.getElementById("prof-user-avatar").src = b64;
+                    localStorage.setItem("niro_avatar_b64", b64);
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        if (localStorage.getItem("niro_avatar_b64")) {
+            document.getElementById("prof-user-avatar").src = localStorage.getItem("niro_avatar_b64");
+        }
+        if (localStorage.getItem("niro_player_name")) {
+            document.getElementById("prof-user-name").innerText = localStorage.getItem("niro_player_name");
+        }
+
+        function changeProfileName() {
+            let cur = localStorage.getItem("niro_player_name") || "Niro Player";
+            let val = prompt("ስምዎን ወይም Username ያስገቡ:", cur);
+            if (val && val.trim().length > 0) {
+                localStorage.setItem("niro_player_name", val.trim());
+                document.getElementById("prof-user-name").innerText = val.trim();
+            }
+        }
+
+        // VIP 7-Days & Percentage Counter
+        function redeemVipCode() {
+            let pass = document.getElementById("vip-pass-code").value.trim().toUpperCase();
+            if (pass === "VIP777" || pass === "VIP2026") {
+                let expire = Date.now() + (7 * 24 * 60 * 60 * 1000);
+                localStorage.setItem("niro_vip_expire_date", expire);
+                balance += 50;
+                updateBal();
+                alert("👑 VIP በተሳካ ሁኔታ ተከፍቷል! ለ 7 ቀናት የሚቆይ ቦነስ ገብቷል።");
+                closeModal("vip-modal");
+                updateVipTracker();
+            } else {
+                alert("❌ የተሳሳተ የ VIP ኮድ!");
+            }
+        }
+
+        function updateVipTracker() {
+            let exp = parseInt(localStorage.getItem("niro_vip_expire_date") || "0");
+            let box = document.getElementById("vip-tracker-box");
+            if (Date.now() < exp) {
+                let daysLeft = Math.ceil((exp - Date.now()) / (1000 * 60 * 60 * 24));
+                box.innerHTML = `
+                    <div style="background:#1e142c; border:1px solid #a855f7; border-radius:10px; padding:10px; margin-bottom:12px; font-size:0.8rem;">
+                        <div style="display:flex; justify-content:space-between; font-weight:900; color:#c084fc;">
+                            <span>👑 VIP Active (${daysLeft} Days Left)</span>
+                            <span>7% Deposit Rebate</span>
+                        </div>
+                        <div style="width:100%; height:6px; background:#2c1c42; border-radius:3px; margin-top:6px; overflow:hidden;">
+                            <div style="width:${(daysLeft/7)*100}%; height:100%; background:#a855f7;"></div>
+                        </div>
+                    </div>
+                `;
+            } else {
+                box.innerHTML = "";
+            }
+        }
+        updateVipTracker();
+
+        // Animated Lucky Wheel for Spin and Shamo
+        let currentWheelType = "spin";
+        let isWheelTurning = false;
+
+        function openClaimBox(type) {
+            currentWheelType = type;
+            document.getElementById("wheel-modal-title").innerText = type === "spin" ? "🎡 Lucky Spin Wheel" : "🎁 Shamo Mystery Box";
+            document.getElementById("spin-wheel-modal").style.display = "flex";
+        }
+
+        function executeLuckySpin() {
+            if (isWheelTurning) return;
+            isWheelTurning = true;
+            let disk = document.getElementById("active-wheel-disk");
+            let deg = 1440 + Math.floor(Math.random() * 360);
+            disk.style.transform = `rotate(${deg}deg)`;
+
+            setTimeout(() => {
+                isWheelTurning = false;
+                let won = (Math.random() * 4 + 1.5).toFixed(2);
+                balance += parseFloat(won);
+                updateBal();
+                document.getElementById("spin-wheel-modal").style.display = "none";
+                alert(`🎉 Congratulations! You won ${won} ETB from ${currentWheelType.toUpperCase()}!`);
+                disk.style.transform = "rotate(0deg)";
+            }, 3100);
+        }
+
+        // Aviator Launch with Spinner
+        function launchAviatorWithLoader() {
+            let loader = document.getElementById("game-connecting-loader");
+            loader.style.display = "flex";
+            setTimeout(() => {
+                loader.style.display = "none";
+                document.getElementById("view-lobby").style.display = "none";
+                document.getElementById("view-aviator").style.display = "flex";
+                fitCanvas();
+                startAudioEngine();
+                startAviatorEngine();
+            }, 2500);
+        }
+
+        function returnToLobby() {
+            stopAudioEngine();
+            if (loopRef) cancelAnimationFrame(loopRef);
+            gameState = "STANDBY";
+            document.getElementById("view-aviator").style.display = "none";
+            document.getElementById("view-lobby").style.display = "flex";
         }
 
         // 10-Round Plan
@@ -1127,7 +1305,7 @@
             alert("የ 10 ዙር የ Aviator ቁጥሮች ተቀምጠዋል!");
         }
 
-        // Coupons Database
+        // Coupons
         let couponDb = JSON.parse(localStorage.getItem("niro_coupon_db")) || {
             "SHAMO10": { amt: 10, type: "SHAMO" },
             "VIP2026": { amt: 50, type: "VIP" },
@@ -1159,49 +1337,7 @@
             }
         }
 
-        function openClaimBox(t) {
-            let claimedKey = "niro_claimed_" + t;
-            let count = parseInt(localStorage.getItem(claimedKey) || "0");
-            if (count >= 3) {
-                return alert(`የዛሬውን የ ${t.toUpperCase()} እድል ጨርሰዋል!`);
-            }
-            let win = (Math.random() * 3 + 1).toFixed(2);
-            balance += parseFloat(win);
-            updateBal();
-            localStorage.setItem(claimedKey, count + 1);
-            alert(`🎁 የ ${t.toUpperCase()} ቦነስ ${win} ብር አግኝተዋል!`);
-        }
-
-        function redeemVipCode() {
-            let pass = document.getElementById("vip-pass-code").value.trim().toUpperCase();
-            if (pass === "VIP777" || (couponDb[pass] && couponDb[pass].type === "VIP")) {
-                balance += 50;
-                updateBal();
-                alert("👑 VIP ክለብ በተሳካ ሁኔታ ተከፍቷል! 50 ብር ቦነስ ተጨምሯል!");
-                closeModal("vip-modal");
-            } else {
-                alert("❌ የተሳሳተ የ VIP ኮድ!");
-            }
-        }
-
-        // Aviator Game Switchers
-        function launchAviator() {
-            document.getElementById("view-lobby").style.display = "none";
-            document.getElementById("view-aviator").style.display = "flex";
-            fitCanvas();
-            startAudioEngine();
-            startAviatorEngine();
-        }
-
-        function returnToLobby() {
-            stopAudioEngine();
-            if (loopRef) cancelAnimationFrame(loopRef);
-            gameState = "STANDBY";
-            document.getElementById("view-aviator").style.display = "none";
-            document.getElementById("view-lobby").style.display = "flex";
-        }
-
-        // Canvas & Realistic Plane Rendering
+        // Canvas & Realistic Jet Rendering
         const canvas = document.getElementById("aviator-cvs");
         const ctx = canvas.getContext("2d");
         const multLabel = document.getElementById("flight-mult");
@@ -1247,7 +1383,6 @@
             let val = parseFloat(inp.value) || 2;
 
             if (gameState === "FLYING" && obj.active && !obj.cashed) {
-                // Cashout
                 obj.cashed = true;
                 let won = (obj.val * currentMult).toFixed(2);
                 balance += parseFloat(won);
@@ -1271,7 +1406,6 @@
             ctx.fillStyle = "#07080e";
             ctx.fillRect(0, 0, W, H);
 
-            // Sunburst Background Rays
             let cx = 0, cy = H;
             let rays = 24;
             for (let i = 0; i < rays; i++) {
@@ -1287,7 +1421,6 @@
                 }
             }
 
-            // Dotted Axis
             ctx.fillStyle = "rgba(255, 255, 255, 0.22)";
             for (let x = 25; x < W; x += 32) {
                 ctx.beginPath();
@@ -1301,13 +1434,12 @@
             }
         }
 
-        // Realistic Propeller Jet
         function drawAviatorPlane(x, y, rad) {
             ctx.save();
             ctx.translate(x, y);
             ctx.rotate(rad);
 
-            // Red Body
+            // Red Jet Body
             ctx.fillStyle = "#e11d48";
             ctx.beginPath();
             ctx.moveTo(-34, 4);
@@ -1344,7 +1476,7 @@
             ctx.closePath();
             ctx.fill();
 
-            // Front Propeller
+            // Propeller
             propRot += 0.6;
             ctx.save();
             ctx.translate(27, 3);
@@ -1408,7 +1540,7 @@
             let px = sx + (W * 0.72) * Math.min(norm * 1.15, 1);
             let py = sy - (H * 0.64) * Math.pow(Math.min(norm * 1.15, 1), 0.85);
 
-            // Shaded Red Area
+            // Shaded Red Under-Curve Area
             ctx.beginPath();
             ctx.moveTo(sx, sy);
             ctx.quadraticCurveTo((sx + px) * 0.45, sy, px, py);
@@ -1421,7 +1553,7 @@
             ctx.fillStyle = grad;
             ctx.fill();
 
-            // Bold Glowing Curve Line (Demko Key Line)
+            // Bold Glowing Curve Line
             ctx.beginPath();
             ctx.moveTo(sx, sy);
             ctx.quadraticCurveTo((sx + px) * 0.45, sy, px, py);
@@ -1457,7 +1589,6 @@
             crashLabel.style.display = "block";
             multLabel.style.color = "#ef4444";
 
-            // Push History
             let span = document.createElement("span");
             span.className = `pill-item ${targetCrash > 2 ? 'c-purple' : 'c-blue'}`;
             span.innerText = `${targetCrash}x`;
@@ -1473,7 +1604,6 @@
                 btn.innerHTML = `<span>Bet</span><small>${inp.value}.00 ETB</small>`;
             });
 
-            // Plane Fly-Off Animation
             let fx = lastX;
             let fy = lastY;
             function flyOff() {
